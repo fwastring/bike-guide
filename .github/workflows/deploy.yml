@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Fetches full history so you can access previous commits
 
       - name: Check for changes
         id: changes

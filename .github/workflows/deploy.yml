@@ -18,7 +18,7 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          files=$(git diff --name-only '${{ github.event.before }}' '${{ github.sha }}')
           echo "Changed files: $files"
           frontend_changes=false
           backend_changes=false
@@ -33,6 +33,7 @@ jobs:
 
   backend:
     if: ${{ needs.check-changes.outputs.backend == 'true' }}
+    needs: [check-changes]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -80,6 +81,7 @@ jobs:
 
   frontend:
     if: ${{ needs.check-changes.outputs.frontend == 'true' }}
+    needs: check-changes
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

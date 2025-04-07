@@ -9,7 +9,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
     <div class="wrapper">
       <div class="bg-red-300">
-        asdasjk
+        HEJHEJHEJ
       </div>
       <nav>
         <RouterLink to="/">Home</RouterLink>

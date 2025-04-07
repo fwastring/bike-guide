@@ -1,4 +1,4 @@
-name: Backend - Build and Push
+name: ⚓ Deploy to Cluster
 
 on:
   push:

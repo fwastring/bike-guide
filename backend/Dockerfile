@@ -15,7 +15,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app and specify the output binary
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.Environment=production" -o /app/bike-guide-api .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.Environment=production" -o /app/bike-guide-api ./cmd/app
 
 # Stage 2: Create the final image
 FROM alpine:latest

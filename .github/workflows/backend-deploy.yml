@@ -35,6 +35,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          repository: fwastring/argocd-bike-guide
+          token: ${{ secrets.GITOPS_TOKEN}}
 
       - name: Update Kubernetes deployment with new image tag
         run: |

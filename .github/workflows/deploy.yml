@@ -103,8 +103,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          context: ./backend
-          tags: ghcr.io/${{ github.repository }}/backend:${{ github.sha }}
+          context: ./frontend
+          tags: ghcr.io/${{ github.repository }}/frontend:${{ github.sha }}
 
 
   frontend-deployment:

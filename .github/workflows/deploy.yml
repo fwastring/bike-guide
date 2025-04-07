@@ -72,12 +72,12 @@ jobs:
       - name: Update Kubernetes deployment with new image tag
         run: |
           # Update the deployment.yaml with the new image tag (ghcr.io/${{ github.repository }}/backend:${{ github.sha }})
-          sed -i 's|image: ghcr.io/${{ github.repository }}/backend:.*|image: ghcr.io/${{ github.repository }}/backend:${{ github.sha }}|' k8s/deployment.yml
+          sed -i 's|image: ghcr.io/${{ github.repository }}/backend:.*|image: ghcr.io/${{ github.repository }}/backend:${{ github.sha }}|' bike-guide/deployment.yml
 
           # Commit and push the changes to the repository
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@github.com"
-          git add k8s/deployment.yml
+          git add bike-guide/deployment.yml
           git commit -m "Update backend image tag to ${{ github.sha }}"
           git push origin main
 
@@ -121,11 +121,11 @@ jobs:
       - name: Update Kubernetes deployment with new image tag
         run: |
           # Update the deployment.yaml with the new image tag (ghcr.io/${{ github.repository }}/backend:${{ github.sha }})
-          sed -i 's|image: ghcr.io/${{ github.repository }}/frontend:.*|image: ghcr.io/${{ github.repository }}/frontend:${{ github.sha }}|' k8s/deployment.yml
+          sed -i 's|image: ghcr.io/${{ github.repository }}/frontend:.*|image: ghcr.io/${{ github.repository }}/frontend:${{ github.sha }}|' bike-guide/deployment.yml
 
           # Commit and push the changes to the repository
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@github.com"
-          git add k8s/deployment.yml
+          git add bike-guide/deployment.yml
           git commit -m "Update frontend image tag to ${{ github.sha }}"
           git push origin main

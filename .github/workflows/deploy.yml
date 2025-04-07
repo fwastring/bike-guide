@@ -1,4 +1,4 @@
-name: Build and Push Docker Image to GHCR
+name: Frontend - Build and Push
 
 on:
   push:

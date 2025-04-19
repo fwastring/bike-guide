@@ -5,15 +5,45 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'map',
-      component: () => import('../views/MapView.vue'),
+      name: 'landing',
+      component: () => import('../views/LandingView.vue')
     },
     {
-      path: '/map',
-      name: 'map-alt',
-      component: () => import('../views/MapView.vue'),
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
     },
-  ],
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/SignUpView.vue')
+    },
+    {
+      path: '/onboarding',
+      name: 'onboarding',
+      component: () => import('../views/OnboardingView.vue')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/SearchView.vue')
+    },
+    {
+      path: '/select',
+      name: 'select',
+      component: () => import('../views/SelectView.vue')
+    },
+    {
+      path: '/result',
+      name: 'result',
+      component: () => import('../views/ResultView.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/AboutView.vue')
+    }
+  ]
 })
 
 export default router

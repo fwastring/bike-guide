@@ -6,7 +6,15 @@
         ref="map"
         :zoom="13"
         :center="[55.7047, 13.1910]"
-        :options="{ zoomControl: false }"
+        :options="{ 
+          zoomControl: false, 
+          minZoom: 4,
+          maxBounds: [
+            [55.0, 10.0],  // Southwest corner (southern Sweden)
+            [69.0, 24.0]   // Northeast corner (northern Sweden)
+          ],
+          maxBoundsViscosity: 1.0
+        }"
         style="height: 100%; width: 100%"
       >
         <l-tile-layer
@@ -21,11 +29,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { LMap, LTileLayer, LControlZoom } from '@vue-leaflet/vue-leaflet'
 import * as L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import Sidebar from '@/components/Sidebar.vue'
+
+const mapRef = ref<L.Map | null>(null)
 
 // Fix for default marker icons
 onMounted(() => {
@@ -43,6 +53,11 @@ onMounted(() => {
     shadowSize: [41, 41]
   })
   L.Marker.prototype.options.icon = iconDefault
+
+  // Set up zoom constraints
+  if (mapRef.value) {
+    mapRef.value.setMinZoom(4)
+  }
 })
 </script>
 

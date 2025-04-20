@@ -28,42 +28,44 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="result">
+  <div class="min-h-screen flex flex-col">
     <Header />
-    <main class="main-content">
-      <div class="route-details">
-        <h1>{{ routeDetails.title }}</h1>
+    <main class="flex-1 p-8 bg-gray-50">
+      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">{{ routeDetails.title }}</h1>
         
-        <div class="route-stats">
-          <div class="stat">
-            <h3>Distance</h3>
-            <p>{{ routeDetails.distance }}</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <h3 class="text-gray-600 mb-1">Distance</h3>
+            <p class="text-xl font-semibold text-gray-800">{{ routeDetails.distance }}</p>
           </div>
-          <div class="stat">
-            <h3>Elevation</h3>
-            <p>{{ routeDetails.elevation }}</p>
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <h3 class="text-gray-600 mb-1">Elevation</h3>
+            <p class="text-xl font-semibold text-gray-800">{{ routeDetails.elevation }}</p>
           </div>
-          <div class="stat">
-            <h3>Difficulty</h3>
-            <p>{{ routeDetails.difficulty }}</p>
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <h3 class="text-gray-600 mb-1">Difficulty</h3>
+            <p class="text-xl font-semibold text-gray-800">{{ routeDetails.difficulty }}</p>
           </div>
         </div>
 
-        <div class="description">
-          <h2>Description</h2>
-          <p>{{ routeDetails.description }}</p>
+        <div class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Description</h2>
+          <p class="text-gray-600 leading-relaxed">{{ routeDetails.description }}</p>
         </div>
 
-        <div class="highlights">
-          <h2>Highlights</h2>
-          <ul>
-            <li v-for="(highlight, index) in routeDetails.highlights" :key="index">
+        <div class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Highlights</h2>
+          <ul class="space-y-2">
+            <li v-for="(highlight, index) in routeDetails.highlights" 
+                :key="index"
+                class="text-gray-600 border-b border-gray-200 pb-2 last:border-0">
               {{ highlight }}
             </li>
           </ul>
         </div>
 
-        <div class="actions">
+        <div class="flex gap-4 justify-center">
           <BaseButton
             title="View on Map"
             :link="routeDetails.mapUrl"

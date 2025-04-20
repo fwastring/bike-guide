@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import 'leaflet/dist/leaflet.css'
 import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <RouterView />
+  <div class="w-full h-screen m-0 p-0 bg-[#FBFBFB]">
+    <RouterView />
+  </div>
 </template>
 
 <style>

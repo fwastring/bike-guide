@@ -29,9 +29,9 @@ const handleSignup = () => {
 </script>
 
 <template>
-  <div class="signup-card">
-    <h2>Sign Up</h2>
-    <form @submit.prevent="handleSignup" class="signup-form">
+  <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Sign Up</h2>
+    <form @submit.prevent="handleSignup" class="flex flex-col gap-4">
       <InputField
         v-model="name"
         label="Full Name"
@@ -55,15 +55,18 @@ const handleSignup = () => {
         type="password"
         placeholder="Confirm your password"
       />
-      <span v-if="error" class="error-message">{{ error }}</span>
+      <span v-if="error" class="text-red-500 text-center">{{ error }}</span>
       <BaseButton
         title="Sign Up"
         variant="primary"
         @click="handleSignup"
       />
     </form>
-    <div class="login-link">
-      <p>Already have an account? <RouterLink to="/login">Log in</RouterLink></p>
+    <div class="text-center mt-4">
+      <p class="text-gray-600">
+        Already have an account? 
+        <RouterLink to="/login" class="text-blue-600 hover:text-blue-700 hover:underline">Log in</RouterLink>
+      </p>
     </div>
   </div>
 </template>

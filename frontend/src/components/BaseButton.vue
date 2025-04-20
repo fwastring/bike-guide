@@ -5,10 +5,14 @@ interface Props {
   title: string
   link?: string
   variant?: 'primary' | 'secondary' | 'tertiary'
+  type?: 'button' | 'submit'
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  variant: 'primary'
+  variant: 'primary',
+  type: 'button',
+  disabled: false
 })
 
 const emit = defineEmits(['click'])
@@ -18,58 +22,27 @@ const emit = defineEmits(['click'])
   <RouterLink
     v-if="link"
     :to="link"
-    class="button"
-    :class="variant"
+    class="inline-block px-8 py-3 rounded-full font-medium text-center transition-all duration-200"
+    :class="{
+      'bg-purple-500 text-white hover:bg-purple-600': variant === 'primary',
+      'bg-blue-50 text-purple-500 hover:bg-blue-100': variant === 'secondary',
+      'text-purple-500 hover:text-purple-600 underline px-2 py-1': variant === 'tertiary'
+    }"
   >
     {{ title }}
   </RouterLink>
   <button
     v-else
-    class="button"
-    :class="variant"
+    :type="type"
+    :disabled="disabled"
+    class="inline-block px-8 py-3 rounded-full font-medium text-center transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+    :class="{
+      'bg-purple-500 text-white hover:bg-purple-600': variant === 'primary',
+      'bg-blue-50 text-purple-500 hover:bg-blue-100': variant === 'secondary',
+      'text-purple-500 hover:text-purple-600 underline px-2 py-1': variant === 'tertiary'
+    }"
     @click="emit('click')"
   >
     {{ title }}
   </button>
-</template>
-
-<style scoped>
-.button {
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  display: inline-block;
-}
-
-.primary {
-  background-color: #007bff;
-  color: white;
-}
-
-.primary:hover {
-  background-color: #0056b3;
-}
-
-.secondary {
-  background-color: #6c757d;
-  color: white;
-}
-
-.secondary:hover {
-  background-color: #5a6268;
-}
-
-.tertiary {
-  background-color: transparent;
-  color: #007bff;
-  border: 1px solid #007bff;
-}
-
-.tertiary:hover {
-  background-color: rgba(0, 123, 255, 0.1);
-}
-</style> 
+</template> 

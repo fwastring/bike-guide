@@ -25,21 +25,24 @@ const handleSelect = (optionId: string) => {
 </script>
 
 <template>
-  <div class="select-card">
-    <h2>{{ title }}</h2>
-    <div class="options">
+  <div class="bg-white p-8 rounded-lg shadow-md max-w-2xl w-full">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">{{ title }}</h2>
+    <div class="grid gap-4 mb-8">
       <div
         v-for="option in options"
         :key="option.id"
-        class="option"
-        :class="{ selected: selectedOption === option.id }"
+        class="p-4 border rounded-md cursor-pointer transition-colors"
+        :class="{
+          'border-blue-500 bg-blue-50': selectedOption === option.id,
+          'border-gray-200 hover:border-blue-500 hover:bg-blue-50': selectedOption !== option.id
+        }"
         @click="handleSelect(option.id)"
       >
-        <h3>{{ option.title }}</h3>
-        <p>{{ option.description }}</p>
+        <h3 class="font-semibold text-gray-800 mb-1">{{ option.title }}</h3>
+        <p class="text-gray-600">{{ option.description }}</p>
       </div>
     </div>
-    <div class="actions">
+    <div class="flex justify-center">
       <BaseButton
         title="Continue"
         variant="primary"
@@ -48,60 +51,4 @@ const handleSelect = (optionId: string) => {
       />
     </div>
   </div>
-</template>
-
-<style scoped>
-.select-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  width: 100%;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-.options {
-  display: grid;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.option {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.option:hover {
-  border-color: #007bff;
-  background-color: rgba(0, 123, 255, 0.05);
-}
-
-.option.selected {
-  border-color: #007bff;
-  background-color: rgba(0, 123, 255, 0.1);
-}
-
-.option h3 {
-  margin: 0 0 0.5rem 0;
-  color: #333;
-}
-
-.option p {
-  margin: 0;
-  color: #666;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-}
-</style> 
+</template> 

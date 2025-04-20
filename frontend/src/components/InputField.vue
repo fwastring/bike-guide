@@ -18,52 +18,16 @@ const emit = defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <div class="input-field">
-    <label v-if="label" class="label">{{ label }}</label>
+  <div class="flex flex-col gap-2 w-full">
+    <label v-if="label" class="font-semibold text-gray-800">{{ label }}</label>
     <input
       :type="type"
       :placeholder="placeholder"
       :value="modelValue"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-      class="input"
-      :class="{ 'error': error }"
+      class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+      :class="{ 'border-red-500': error }"
     />
-    <span v-if="error" class="error-message">{{ error }}</span>
+    <span v-if="error" class="text-sm text-red-500">{{ error }}</span>
   </div>
-</template>
-
-<style scoped>
-.input-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.label {
-  font-weight: 600;
-  color: #333;
-}
-
-.input {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.input:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-.input.error {
-  border-color: #dc3545;
-}
-
-.error-message {
-  color: #dc3545;
-  font-size: 0.875rem;
-}
-</style> 
+</template> 

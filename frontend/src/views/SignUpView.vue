@@ -2,7 +2,13 @@
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import SignUpCard from '../components/SignUpCard.vue'
+
+function handleSignup() {
+  console.log("Signup triggered!");
+}
 </script>
+
+
 
 <template>
   <div class="signup">
@@ -30,3 +36,4 @@ import SignUpCard from '../components/SignUpCard.vue'
   background-color: #f5f5f5;
 }
 </style> 
+

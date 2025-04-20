@@ -47,7 +47,7 @@ const handleSelect = (optionId: string) => {
         title="Continue"
         variant="primary"
         :disabled="!selectedOption"
-        @click="$emit('continue')"
+        @click="$emit('select')"
       />
     </div>
   </div>

@@ -29,9 +29,9 @@ const handleSignup = () => {
 </script>
 
 <template>
-  <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Sign Up</h2>
-    <form @submit.prevent="handleSignup" class="flex flex-col gap-4">
+  <div class="bg-[#FBFBFB] p-4 sm:p-6 rounded-3xl border border-gray-300 max-w-prose border-[0.5px] w-full">
+    <h2 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 text-center">Sign Up</h2>
+    <form @submit.prevent="handleSignup" class="space-y-3">
       <InputField
         v-model="name"
         label="Full Name"
@@ -55,60 +55,25 @@ const handleSignup = () => {
         type="password"
         placeholder="Confirm your password"
       />
-      <span v-if="error" class="text-red-500 text-center">{{ error }}</span>
-      <BaseButton
-        title="Sign Up"
-        variant="primary"
-        @click="handleSignup"
-      />
+      <span v-if="error" class="text-sm text-red-500 text-center">{{ error }}</span>
+      <div class="flex justify-center">
+        <BaseButton
+          title="Sign Up"
+          variant="primary"
+          type="submit"
+          class="w-full flex items-center justify-center px-4 py-2 text-sm font-medium"
+        />
+      </div>
     </form>
-    <div class="text-center mt-4">
-      <p class="text-gray-600">
+    <div class="text-center mt-3">
+      <p class="text-sm text-gray-600">
         Already have an account? 
-        <RouterLink to="/login" class="text-blue-600 hover:text-blue-700 hover:underline">Log in</RouterLink>
+        <RouterLink to="/login" class="text-purple-500 hover:text-purple-600 hover:underline">Log in</RouterLink>
       </p>
     </div>
   </div>
 </template>
 
 <style scoped>
-.signup-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-.signup-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.error-message {
-  color: #dc3545;
-  text-align: center;
-}
-
-.login-link {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.login-link a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.login-link a:hover {
-  text-decoration: underline;
-}
+/* Remove the old styles since we're using Tailwind classes directly */
 </style> 

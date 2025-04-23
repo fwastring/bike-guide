@@ -22,9 +22,9 @@ const emit = defineEmits(['click'])
   <RouterLink
     v-if="link"
     :to="link"
-    class="inline-block px-8 py-3 rounded-full font-medium text-center transition-all duration-200"
+    class="inline-block px-6 py-2 rounded-full font-medium text-center transition-all duration-200"
     :class="{
-      'bg-purple-500 text-white hover:bg-purple-600': variant === 'primary',
+      'bg-[#8E7DBE] text-white hover:bg-[#7D6CAE]': variant === 'primary',
       'bg-blue-50 text-purple-500 hover:bg-blue-100': variant === 'secondary',
       'text-purple-500 hover:text-purple-600 underline px-2 py-1': variant === 'tertiary'
     }"
@@ -35,9 +35,9 @@ const emit = defineEmits(['click'])
     v-else
     :type="type"
     :disabled="disabled"
-    class="inline-block px-8 py-3 rounded-full font-medium text-center transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+    class="inline-block px-6 py-2 rounded-full font-medium text-center transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
     :class="{
-      'bg-purple-500 text-white hover:bg-purple-600': variant === 'primary',
+      'bg-[#8E7DBE] text-white hover:bg-[#7D6CAE]': variant === 'primary',
       'bg-blue-50 text-purple-500 hover:bg-blue-100': variant === 'secondary',
       'text-purple-500 hover:text-purple-600 underline px-2 py-1': variant === 'tertiary'
     }"

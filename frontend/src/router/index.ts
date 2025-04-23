@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import OptionView from '../views/OptionView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,14 +30,14 @@ const router = createRouter({
       component: () => import('../views/SearchView.vue')
     },
     {
-      path: '/select',
-      name: 'select',
-      component: () => import('../views/SelectView.vue')
+      path: '/options',
+      name: 'options',
+      component: OptionView
     },
     {
-      path: '/result',
-      name: 'result',
-      component: () => import('../views/ResultView.vue')
+      path: '/route/:id',
+      name: 'route-detail',
+      component: () => import('../views/RouteDetailView.vue')
     },
     {
       path: '/about',

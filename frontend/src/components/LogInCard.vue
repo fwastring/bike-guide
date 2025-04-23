@@ -41,9 +41,9 @@ const handleSubmit = () => {
 </script>
 
 <template>
-  <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Log In</h2>
-    <form @submit.prevent="handleSubmit" class="space-y-4">
+  <div class="bg-[#FBFBFB] p-4 sm:p-6 rounded-3xl border border-gray-300 max-w-prose border-[0.5px] w-full">
+    <h2 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 text-center">Log In</h2>
+    <form @submit.prevent="handleSubmit" class="space-y-3">
       <InputField
         v-model="email"
         label="Email"
@@ -66,13 +66,14 @@ const handleSubmit = () => {
           variant="primary"
           type="submit"
           :disabled="isSubmitting"
+          class="w-full flex items-center justify-center px-4 py-2 text-sm font-medium"
         />
       </div>
     </form>
-    <div class="text-center mt-4">
-      <p class="text-gray-600">
+    <div class="text-center mt-3">
+      <p class="text-sm text-gray-600">
         Don't have an account? 
-        <RouterLink to="/signup" class="text-blue-600 hover:text-blue-700 hover:underline">Sign up</RouterLink>
+        <RouterLink to="/signup" class="text-purple-500 hover:text-purple-600 hover:underline">Sign up</RouterLink>
       </p>
     </div>
   </div>

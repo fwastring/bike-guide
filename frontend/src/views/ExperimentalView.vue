@@ -46,17 +46,71 @@
           </section>
 
           <!-- Components Section -->
-          <section class="space-y-8 space-x-4">
-            <BaseButton title="Primary Button" variant="primary" />
-            <BaseButton title="Secondary Button" variant="secondary" />
-            <BaseButton title="Tertiary Button" variant="tertiary" />
-            <InputField label="Default Input" placeholder="Enter text here" />
-                        <InputField label="Default Input" placeholder="Enter text here" />
+          <section class="space-y-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Components</h2>
+            <div class="grid grid-cols-1 ">
+              <div class="space-y-8">
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Buttons</h3>
+                  <div class="flex gap-4 flex-wrap">
+                    <BaseButton title="Primary Button" variant="primary" />
+                    <BaseButton title="Secondary Button" variant="secondary" />
+                    <BaseButton title="Tertiary Button" variant="tertiary" />
+                  </div>
+                </div>
 
-            <LogInCard />
-            <SignUpCard />
-            <SearchCard @search="handleSearch" />
-            
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Input Field</h3>
+                  <InputField label="Default Input" placeholder="Enter text here" />
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Login Card</h3>
+                  <LogInCard />
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Sign Up Card</h3>
+                  <SignUpCard />
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Search Card</h3>
+                  <SearchCard @search="handleSearch" />
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Summary Card</h3>
+                  <SummaryCard
+                    location="Vägvägen 7"
+                    difficulty="Medium"
+                    distance="20-30 km"
+                    @edit="handleEdit"
+                  />
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Option Card</h3>
+                  <OptionCard
+                    title="Adelgatan Lund"
+                    description="BienVélo loop from Lund centralstation"
+                    distance="27.5 km"
+                    duration="54 min"
+                    difficulty="Easy"
+                    imageUrl="/placeholder-route.jpg"
+                    @expand="handleExpand"
+                  />
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Option List Card</h3>
+                  <OptionListCard
+                    :options="routeOptions"
+                    @expand="handleExpand"
+                  />
+                </div>
+              </div>
+            </div>
           </section>
 
           <!-- Color Scheme Section -->
@@ -149,8 +203,47 @@ import InputField from '../components/InputField.vue'
 import LogInCard from '../components/LogInCard.vue'
 import SignUpCard from '../components/SignUpCard.vue'
 import SearchCard from '../components/SearchCard.vue'
+import SummaryCard from '../components/SummaryCard.vue'
+import OptionCard from '../components/OptionCard.vue'
+import OptionListCard from '../components/OptionListCard.vue'
+import type { RouteOption } from '@/types/route'
 
 const handleSearch = (searchData: { address: string; difficulty: string; distance: string }) => {
   console.log('Searching with:', searchData)
 }
+
+const handleEdit = () => {
+  console.log('Edit clicked')
+}
+
+const handleExpand = (index: number) => {
+  console.log('Expand clicked for option:', index)
+}
+
+const routeOptions: RouteOption[] = [
+  {
+    title: 'Scenic Mountain Trail',
+    description: 'A beautiful mountain trail with breathtaking views',
+    distance: '10km',
+    duration: '2 hours',
+    difficulty: 'Easy' as const,
+    imageUrl: '/images/mountain-trail.jpg'
+  },
+  {
+    title: 'Forest Adventure',
+    description: 'Explore the dense forest and its wildlife',
+    distance: '15km',
+    duration: '3 hours',
+    difficulty: 'Medium' as const,
+    imageUrl: '/images/forest-adventure.jpg'
+  },
+  {
+    title: 'Coastal Route',
+    description: 'Ride along the stunning coastline',
+    distance: '20km',
+    duration: '4 hours',
+    difficulty: 'Hard' as const,
+    imageUrl: '/images/coastal-route.jpg'
+  }
+]
 </script> 

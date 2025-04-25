@@ -37,7 +37,7 @@ export const useSearchStore = defineStore('search', () => {
           title: 'Scenic Mountain Trail',
           description: 'A beautiful mountain trail with breathtaking views',
           distance: '10km',
-          duration: '2 hours',
+          duration: '2h',
           difficulty: 'Easy' as const,
           imageUrl: '/images/mountain-trail.jpg'
         },
@@ -45,7 +45,7 @@ export const useSearchStore = defineStore('search', () => {
           title: 'Forest Adventure',
           description: 'Explore the dense forest and its wildlife',
           distance: '15km',
-          duration: '3 hours',
+          duration: '3h',
           difficulty: 'Medium' as const,
           imageUrl: '/images/forest-adventure.jpg'
         },
@@ -53,7 +53,7 @@ export const useSearchStore = defineStore('search', () => {
           title: 'Coastal Route',
           description: 'Ride along the stunning coastline',
           distance: '20km',
-          duration: '4 hours',
+          duration: '4h',
           difficulty: 'Hard' as const,
           imageUrl: '/images/coastal-route.jpg'
         }

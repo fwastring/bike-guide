@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container border border-gray-300 rounded-2xl">
+  <div class="map-container border-[0.5px] border-gray-300 rounded-2xl">
     <l-map
       v-model:zoom="zoom"
       :center="center"

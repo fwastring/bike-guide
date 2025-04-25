@@ -3,15 +3,17 @@ import { ref } from 'vue'
 import SearchCard from '../components/SearchCard.vue'
 import MapCard from '../components/MapCard.vue'
 import Header from '../components/Header.vue'
+import { useSearchStore } from '@/stores/searchStore'
+
+const searchStore = useSearchStore()
 
 const handleSearch = (searchData: { address: string; difficulty: string; distance: string }) => {
-  console.log('Searching with:', searchData)
+  searchStore.setSearchParams(searchData)
 }
 </script>
 
 <template>
-<Header />
-  <div class="flex max-w-7xl mx-auto p-6 md:space-x-6">
+  <div class="min-h-screen flex max-w-7xl mx-auto p-6 md:space-x-6">
     
     <!-- Search Panel -->
     <div class="w-full md:w-1/3">

@@ -1,111 +1,62 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import SelectCard from '../components/SelectCard.vue'
 import BaseButton from '../components/BaseButton.vue'
 import { useRouter } from 'vue-router'
 import Header from '../components/Header.vue'
+import { MapPin, Map, Bike } from 'lucide-vue-next'
+
 const router = useRouter()
-const currentStep = ref(1)
 
-const bikeTypes = [
+const onboardingSteps = [
   {
-    id: 'road',
-    title: 'Road Bike',
-    description: 'Lightweight and fast, perfect for paved roads and long distances.'
+    title: 'Find Route',
+    description: 'Set your parameters for your personalized bike route.',
+    icon: MapPin,
   },
   {
-    id: 'mountain',
-    title: 'Mountain Bike',
-    description: 'Durable and versatile, great for off-road trails and rough terrain.'
+    title: 'Choose optimal route',
+    description: 'Select one out of several suggested routes based on your preference',
+    icon: Map,
   },
   {
-    id: 'hybrid',
-    title: 'Hybrid Bike',
-    description: 'A mix of road and mountain bike features, good for commuting and light trails.'
-  },
-  {
-    id: 'gravel',
-    title: 'Gravel Bike',
-    description: 'Versatile bike that can handle both paved roads and gravel paths.'
+    title: 'Go biking!',
+    description: 'Save the route to your phone and start biking!',
+    icon: Bike,
   }
 ]
 
-const experienceLevels = [
-  {
-    id: 'beginner',
-    title: 'Beginner',
-    description: 'New to cycling or getting back into it after a long break.'
-  },
-  {
-    id: 'intermediate',
-    title: 'Intermediate',
-    description: 'Regular cyclist with some experience on different terrains.'
-  },
-  {
-    id: 'advanced',
-    title: 'Advanced',
-    description: 'Experienced cyclist comfortable with various conditions and distances.'
-  }
-]
-
-const selectedBikeType = ref<string | null>(null)
-const selectedExperience = ref<string | null>(null)
-
-const handleBikeTypeSelect = (type: string) => {
-  selectedBikeType.value = type
-}
-
-const handleExperienceSelect = (level: string) => {
-  selectedExperience.value = level
-}
-
-const handleContinue = () => {
-  if (currentStep.value === 1 && selectedBikeType.value) {
-    currentStep.value = 2
-  } else if (currentStep.value === 2 && selectedExperience.value) {
-    // Here you would typically save the selections and proceed
-    router.push('/search')
-  }
+const handleGetStarted = () => {
+  router.push('/search')
 }
 </script>
 
 <template>
-  <Header />
-  <div class="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-    <div class="w-full max-w-4xl">
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-4">Find Your Perfect Bike</h1>
-        <p class="text-center text-gray-600">Let's help you find the right bike for your needs</p>
-      </div>
-
-      <div v-if="currentStep === 1">
-        <SelectCard
-          title="What type of bike are you looking for?"
-          :options="bikeTypes"
-          @select="handleBikeTypeSelect"
-          @continue="handleContinue"
-        />
-      </div>
-
-      <div v-if="currentStep === 2">
-        <SelectCard
-          title="What's your experience level?"
-          :options="experienceLevels"
-          @select="handleExperienceSelect"
-          @continue="handleContinue"
-        />
-      </div>
-
-      <div class="flex justify-center mt-4">
-        <div class="flex gap-2">
-          <div
-            v-for="step in 2"
-            :key="step"
-            class="w-3 h-3 rounded-full"
-            :class="step <= currentStep ? 'bg-blue-600' : 'bg-gray-300'"
-          ></div>
+  <div class="min-h-screen bg-blue-50 flex items-center py-16 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto w-full">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">How it works</h2>
+      <p class="text-center text-gray-600 mb-12">Follow these simple steps to find your perfect route</p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 mb-12">
+        <div 
+          v-for="(step, index) in onboardingSteps" 
+          :key="index"
+          class="flex-1 bg-[#FBFBFB] rounded-3xl p-8 relative border border-gray-200"
+        >
+          <div class="mb-8">
+            <component 
+              :is="step.icon" 
+              class="w-16 h-16 mx-auto mb-6 text-[#8E7DBE]"
+            />
+            <h3 class="text-2xl font-bold text-center text-gray-900 mb-3">
+              {{ step.title }}
+            </h3>
+            <p class="text-center text-gray-600">
+              {{ step.description }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</template> 
+</template>
+

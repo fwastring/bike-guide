@@ -5,13 +5,17 @@ interface Props {
   placeholder?: string
   modelValue?: string
   error?: string
+  big?: boolean
+  errorBorder?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   type: 'text',
   placeholder: '',
   modelValue: '',
-  error: ''
+  error: '',
+  big: false,
+  errorBorder: false
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -25,8 +29,14 @@ const emit = defineEmits(['update:modelValue'])
       :placeholder="placeholder"
       :value="modelValue"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-      class="w-full px-3 py-2 bg-white border border-gray-300 rounded-full text-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent border-[0.5px]"
-      :class="{ 'border-red-500': error }"
+      :class="[
+        'w-full border-[0.5px] bg-white border text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent  rounded-full',
+        error ? 'border-red-500' : 'border-gray-300',
+        big
+          ? 'px-6 pr-16 py-4 text-base h-14 border-2'
+          : 'px-3 py-2 text-sm',
+        errorBorder ? 'ring-1 outline-none ring-blue-500 ' : ''
+      ]"
     />
     <span v-if="error" class="text-sm text-red-500">{{ error }}</span>
   </div>

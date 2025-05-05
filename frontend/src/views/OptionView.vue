@@ -1,6 +1,13 @@
 <template>
   <div class="h-screen flex flex-col">
     <main class="flex-1 overflow-y-auto bg-gray-50">
+      <!-- Mini Search Card at the top (visible only on sm and above) -->
+      <div class="hidden sm:block w-full bg-white py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+          <MiniSearchCard @search="handleSearch" />
+        </div>
+      </div>
+      
       <div class="flex flex-col md:flex-row max-w-7xl mx-auto p-6 md:space-x-6">
         <!-- Left Panel: Summary -->
         <div class="w-full md:w-1/3">
@@ -9,7 +16,8 @@
             <SummaryCard :location="searchStore.searchParams.address" :difficulty="searchStore.searchParams.difficulty"
               :distance="searchStore.searchParams.distance" @edit="handleEdit" />
           </div>
-
+<section class="flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto w-full gap-6 sm:gap-4">
+      </section>
           <!-- Loading State -->
           <div v-if="searchStore.isLoading" class="flex justify-center items-center py-12">
             <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -40,7 +48,15 @@
           </div>
         </div>
       </div>
-      <Footer />
+      
+      <!-- Mini Search Card at the bottom (visible only on mobile) -->
+      <div class="sm:hidden fixed bottom-0 left-0 right-0 w-full bg-white py-4 shadow-lg border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+          <MiniSearchCard @search="handleSearch" />
+        </div>
+      </div>
+      
+      <Footer class="mb-20 sm:mb-0" />
     </main>
   </div>
 </template>
@@ -53,6 +69,7 @@ import Footer from '../components/Footer.vue'
 import SummaryCard from '../components/SummaryCard.vue'
 import OptionListCard from '../components/OptionListCard.vue'
 import MapCard from '../components/MapCard.vue'
+import MiniSearchCard from '../components/MiniSearchCard.vue'
 
 
 const router = useRouter()
@@ -74,5 +91,10 @@ const handleEdit = () => {
 
 const handleExpand = (index: number) => {
   router.push(`/route/${index}`)
+}
+
+const handleSearch = async (searchData: { address: string; difficulty: string; distance: string }) => {
+  searchStore.setSearchParams(searchData)
+  await searchStore.fetchRouteOptions()
 }
 </script>

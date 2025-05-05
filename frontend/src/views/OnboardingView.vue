@@ -33,8 +33,14 @@ const handleGetStarted = () => {
 <template>
   <div class="min-h-screen bg-blue-50 flex items-center py-16 px-4 sm:px-8">
     <div class="max-w-7xl mx-auto w-full">
-      <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">How it works</h2>
-      <p class="text-center text-gray-600 mb-12">Follow these simple steps to find your perfect route</p>
+      <section class="flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto w-full px-4 py-6 sm:py-10 gap-6 sm:gap-4">
+        <div class="max-w-2xl text-left w-full">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 sm:mb-4">But how does it work?</h1>
+          <p class="text-xl sm:text-2xl lg:text-3xl text-gray-500 mb-2">TextTextTextTextText</p>
+          <p class="text-lg sm:text-xl text-gray-600 mb-2">TextTextTextTextTextTextTextText</p>
+        </div>
+        
+      </section>
       
       <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 mb-12">
         <div 

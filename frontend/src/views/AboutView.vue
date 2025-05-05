@@ -5,9 +5,9 @@ import BaseButton from '../components/BaseButton.vue'
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col">
-    <Header />
-    <main class="flex-1 p-8 bg-gray-50">
+  <div class="flex flex-col">
+   
+    <main class="">
       <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">About Bike Guide</h1>
         
@@ -62,75 +62,7 @@ import BaseButton from '../components/BaseButton.vue'
         </section>
       </div>
     </main>
-    <Footer />
+
   </div>
 </template>
 
-<style scoped>
-.about {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  background-color: #f5f5f5;
-}
-
-.about-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #333;
-}
-
-.about-section {
-  margin-bottom: 2rem;
-}
-
-h2 {
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-p {
-  line-height: 1.6;
-  color: #666;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  padding: 0.5rem 0;
-  color: #666;
-}
-
-li::before {
-  content: "•";
-  color: #007bff;
-  font-weight: bold;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-</style> 

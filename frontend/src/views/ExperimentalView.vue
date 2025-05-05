@@ -108,6 +108,7 @@
                     @expand="handleExpand"
                   />
                 </div>
+                
               </div>
             </div>
           </section>
@@ -184,6 +185,26 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Result Card Example -->
+              <div class="space-y-4 mt-8">
+                <h3 class="text-xl font-semibold text-gray-700">Result Card</h3>
+                <ResultCard
+                  title="Scenic Coastal Route"
+                  distance="20km"
+                  elevation="150m"
+                  difficulty="Moderate"
+                  description="A beautiful ride along the coast with stunning ocean views. Perfect for intermediate cyclists looking for a scenic route."
+                  :highlights="[
+                    'Stunning coastal views',
+                    'Well-maintained paths',
+                    'Multiple rest stops',
+                    'Café at the halfway point'
+                  ]"
+                  mapUrl="https://maps.example.com/route/1"
+                  gpxUrl="https://maps.example.com/route/1.gpx"
+                />
+              </div>
             </div>
           </section>
         </div>
@@ -205,6 +226,7 @@ import SearchCard from '../components/SearchCard.vue'
 import SummaryCard from '../components/SummaryCard.vue'
 import OptionCard from '../components/OptionCard.vue'
 import OptionListCard from '../components/OptionListCard.vue'
+import ResultCard from '../components/ResultCard.vue'
 import type { RouteOption } from '@/types/route'
 
 const handleSearch = (searchData: { address: string; difficulty: string; distance: string }) => {

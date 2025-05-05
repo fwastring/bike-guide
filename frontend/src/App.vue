@@ -5,9 +5,8 @@ import Header from './components/Header.vue'
 </script>
 
 <template>
-  <div class="w-full m-0 p-0 bg-[#FBFBFB]">
+  <div class="bg-[#FBFBFB]">
     <Header />
-
     <RouterView />
   </div>
 </template>

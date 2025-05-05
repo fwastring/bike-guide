@@ -1,56 +1,98 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import LogInCard from '../components/LogInCard.vue'
-import Header from '../components/Header.vue'
-const router = useRouter()
+import { onMounted } from 'vue'
+import { useAuthStore } from '../stores/auth'
 
-const handleLogin = (credentials: { email: string; password: string }) => {
-  // Here you would typically make an API call to authenticate the user
-  console.log('Logging in with:', credentials)
-  // For now, just redirect to home
-  router.push('/')
+const router = useRouter()
+const authStore = useAuthStore()
+
+const handleGoogleLogin = () => {
+  // Redirect to backend Google auth endpoint which will handle the OAuth flow
+  window.location.href = '/api/auth/google'
 }
+
+// Check for authorization code in URL (for callback)
+onMounted(async () => {
+  const urlParams = new URLSearchParams(window.location.search)
+  const code = urlParams.get('code')
+  if (code) {
+    // If we have a code, we're in the callback phase
+    // The backend will handle the code exchange and set the session cookie
+    window.location.href = '/api/auth/google/callback?code=' + code
+  } else {
+    // Check if we're already authenticated
+    const isAuthenticated = await authStore.checkAuth()
+    if (isAuthenticated) {
+      router.push('/map')
+    }
+  }
+})
 </script>
 
 <template>
-  <Header />
-  <div class="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-    
-    <div class="w-full max-w-md">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h1>
-        <p class="text-gray-600">Log in to your account to continue</p>
-      </div>
-
-      <LogInCard @submit="handleLogin" />
-
-      <div class="mt-8 text-center">
-        <p class="text-gray-600">Or continue with</p>
-        <div class="flex justify-center gap-4 mt-4">
-          <button
-            class="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow"
-          >
-            <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
-            </svg>
-          </button>
-          <button
-            class="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow"
-          >
-            <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
-            </svg>
-          </button>
-          <button
-            class="flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow"
-          >
-            <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
+  <div class="login-container">
+    <div class="login-box">
+      <h1>Bike Guide</h1>
+      <p>Welcome to Bike Guide! Please log in to continue.</p>
+      <button class="google-login-btn" @click="handleGoogleLogin">
+        <img src="../assets/google-icon.svg" alt="Google Icon" />
+        Sign in with Google
+      </button>
     </div>
   </div>
-</template> 
+</template>
+
+<style scoped>
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.login-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.google-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.google-login-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.google-login-btn img {
+  width: 24px;
+  height: 24px;
+}
+</style>

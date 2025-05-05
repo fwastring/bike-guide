@@ -1,19 +1,55 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import OptionView from '../views/OptionView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'map',
-      component: () => import('../views/MapView.vue'),
+      name: 'landing',
+      component: () => import('../views/LandingView.vue')
     },
     {
-      path: '/map',
-      name: 'map-alt',
-      component: () => import('../views/MapView.vue'),
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
     },
-  ],
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/SignUpView.vue')
+    },
+    {
+      path: '/onboarding',
+      name: 'onboarding',
+      component: () => import('../views/OnboardingView.vue')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/SearchView.vue')
+    },
+    {
+      path: '/options',
+      name: 'options',
+      component: OptionView
+    },
+    {
+      path: '/route/:id',
+      name: 'route-detail',
+      component: () => import('../views/RouteDetailView.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/experimental',
+      name: 'experimental',
+      component: () => import('../views/ExperimentalView.vue')
+    }
+  ]
 })
 
 export default router

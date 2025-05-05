@@ -1,6 +1,5 @@
 <template>
   <div class="h-screen flex flex-col">
-    <Header />
     <main class="flex-1 overflow-y-auto">
       <div class="p-8 bg-gray-50">
         <div class="max-w-7xl mx-auto space-y-16">

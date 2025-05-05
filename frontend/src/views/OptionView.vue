@@ -1,6 +1,5 @@
 <template>
   <div class="h-screen flex flex-col">
-    <Header />
     <main class="flex-1 overflow-y-auto bg-gray-50">
       <div class="flex flex-col md:flex-row max-w-7xl mx-auto p-6 md:space-x-6">
         <!-- Left Panel: Summary -->
@@ -50,7 +49,6 @@
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSearchStore } from '@/stores/searchStore'
-import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import SummaryCard from '../components/SummaryCard.vue'
 import OptionListCard from '../components/OptionListCard.vue'

@@ -6,6 +6,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import i18n from './i18n'
 
 // Create the Vue application
 const app = createApp(App)
@@ -13,6 +14,7 @@ const app = createApp(App)
 // Use plugins
 app.use(createPinia())
 app.use(router)
+app.use(i18n)
 
 // Mount the application
 app.mount('#app')

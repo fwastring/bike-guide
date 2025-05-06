@@ -1,21 +1,29 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import InputField from './InputField.vue'
 import LocationButton from './LocationButton.vue'
 import BaseButton from './BaseButton.vue'
+import { useScrollTo } from '@/composables/useScrollTo'
 
+const router = useRouter()
 const emit = defineEmits(['search'])
 const address = ref('')
 const difficulty = 'Medium'
 const distance = '20-30 km'
 const errorMessage = ref('')
+const isMobile = ref(window.innerWidth < 640)
+const { scrollToSection } = useScrollTo()
 
 // Responsive: isMobile is true if window width < 640px (sm)
 const windowWidth = ref(window.innerWidth)
 const updateWidth = () => { windowWidth.value = window.innerWidth }
 onMounted(() => window.addEventListener('resize', updateWidth))
 onUnmounted(() => window.removeEventListener('resize', updateWidth))
-const isMobile = computed(() => windowWidth.value < 640)
+
+const scrollToOnboarding = () => {
+  scrollToSection('onboarding')
+}
 
 const handleSearch = () => {
   if (!address.value.trim()) {
@@ -53,8 +61,9 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
           <BaseButton
             title="Help"
             variant="secondary"
-            class="h-10 px-6  text-base rounded-full whitespace-nowrap w-1/2"
+            class="h-10 px-6 text-base rounded-full whitespace-nowrap w-1/2"
             type="button"
+            @click="scrollToOnboarding"
           />
           <BaseButton
             title="Find Route"

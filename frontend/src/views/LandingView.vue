@@ -9,10 +9,12 @@ import MiniSearchCard from '../components/MiniSearchCard.vue'
 import OnboardingView from './OnboardingView.vue'
 import AboutView from './AboutView.vue'
 import WindBackground from '../components/WindBackground.vue'
+import { useI18n } from 'vue-i18n'
 
 const searchStore = useSearchStore()
 const searchSection = ref<HTMLElement | null>(null)
 const router = useRouter()
+const { t } = useI18n()
 
 const handleSearch = async (searchData: { address: string; difficulty: string; distance: string }) => {
   searchStore.setSearchParams(searchData)
@@ -61,16 +63,18 @@ const scrollToSearch = () => {
         </div>
         <!-- Text: smaller font, more margin -->
         <div class="relative z-20 max-w-[500px] sm:max-w-[600px] md:max-w-[600px] lg:max-w-3xl py-16 md:py-32 text-left w-full lg:w-3/5 px-8 xl:px-16 order-2 lg:order-1">
-          <h1 class="font-pramukh text-7xl sm:text-8xl lg:text-8xl text-gray-900 mb-2 sm:mb-4">Your Perfect Ride Awaits</h1>
+          <h1 class="font-pramukh text-7xl sm:text-8xl lg:text-8xl text-gray-900 mb-2 sm:mb-4">{{ t('landing.hero.title') }}</h1>
           
-          <p class="font-poppins tracking-tight font-medium sm:text-lg text-gray-600 mb-2">Tell us your preferences, and we'll find the best bike routes for you — whether you're a casual rider or an experienced cyclist.</p>
+          <p class="font-poppins tracking-tight font-medium sm:text-lg text-gray-600 mb-2">{{ t('landing.hero.description') }}</p>
           <div class="w-full mt-6">
             <MiniSearchCard @search="handleSearch" />
           </div>
         </div>
       </section>
       <!-- Onboarding Section -->
-      <OnboardingView />
+      <section id="onboarding">
+        <OnboardingView />
+      </section>
       <!-- About Section -->
       <AboutView />
       <Footer />

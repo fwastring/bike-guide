@@ -1,0 +1,61 @@
+{
+  "common": {
+    "welcome": "Välkommen till Bike Guide",
+    "loading": "Laddar...",
+    "error": "Ett fel uppstod",
+    "success": "Åtgärden lyckades"
+  },
+  "navigation": {
+    "home": "Hem",
+    "about": "Om oss",
+    "contact": "Kontakt",
+    "profile": "Profil",
+    "help": "Hjälp",
+    "experimental": "Experimentell",
+    "login": "Logga in"
+  },
+  "bike": {
+    "title": "Cykelinformation",
+    "type": "Cykeltyp",
+    "brand": "Märke",
+    "model": "Modell",
+    "year": "År"
+  },
+  "landing": {
+    "hero": {
+      "title": "Din Perfekta Tur Väntar",
+      "description": "Berätta dina preferenser, så hittar vi de bästa cykelrutterna för dig — oavsett om du är en avslappnad cyklist eller en erfaren cyklist."
+    }
+  },
+  "onboarding": {
+    "title": "Hur Det Fungerar",
+    "subtitle": "Hitta din perfekta cykelrutt i tre enkla steg",
+    "steps": {
+      "find": {
+        "title": "Hitta Rutt",
+        "description": "Ställ in dina parametrar för din personliga cykelrutt."
+      },
+      "choose": {
+        "title": "Välj optimal rutt",
+        "description": "Välj en av flera föreslagna rutter baserat på dina preferenser"
+      },
+      "go": {
+        "title": "Ut och cykla!",
+        "description": "Spara rutten till din telefon och börja cykla!"
+      }
+    }
+  },
+  "about": {
+    "title": "Möt Utvecklarna",
+    "description": "Bike Guide skapades av två vänner som brinner för cykling och teknik. Projektet byggdes från grunden med fokus på användarupplevelse, moderna webbtekniker och en kärlek till äventyr. Varje funktion, från ruttssökning till den animerade landningssidan, designades och kodades i samarbete, med otaliga timmar lagda på design, utveckling och testning för att skapa den perfekta cykelkompanjonen.",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "language": {
+    "en": "Engelska",
+    "sv": "Svenska",
+    "switch": "Byt språk"
+  }
+} 

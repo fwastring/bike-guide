@@ -1,0 +1,61 @@
+{
+  "common": {
+    "welcome": "Welcome to Bike Guide",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Operation successful"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "profile": "Profile",
+    "help": "Help",
+    "experimental": "Experimental",
+    "login": "Log In"
+  },
+  "bike": {
+    "title": "Bike Information",
+    "type": "Bike Type",
+    "brand": "Brand",
+    "model": "Model",
+    "year": "Year"
+  },
+  "landing": {
+    "hero": {
+      "title": "Your Perfect Ride Awaits",
+      "description": "Tell us your preferences, and we'll find the best bike routes for you — whether you're a casual rider or an experienced cyclist."
+    }
+  },
+  "onboarding": {
+    "title": "How It Works",
+    "subtitle": "Find your perfect cycling route in three simple steps",
+    "steps": {
+      "find": {
+        "title": "Find Route",
+        "description": "Set your parameters for your personalized bike route."
+      },
+      "choose": {
+        "title": "Choose optimal route",
+        "description": "Select one out of several suggested routes based on your preference"
+      },
+      "go": {
+        "title": "Go biking!",
+        "description": "Save the route to your phone and start biking!"
+      }
+    }
+  },
+  "about": {
+    "title": "Meet the Developers",
+    "description": "Bike Guide was created by two friends passionate about cycling and technology. The project was built from scratch with a focus on user experience, modern web technologies, and a love for adventure. Every feature, from route search to the animated landing page, was designed and coded collaboratively, with countless hours spent on design, development, and testing to make the perfect cycling companion.",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "language": {
+    "en": "English",
+    "sv": "Swedish",
+    "switch": "Switch language"
+  }
+} 

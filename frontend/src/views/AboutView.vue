@@ -1,68 +1,44 @@
 <script setup lang="ts">
-import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
-import BaseButton from '../components/BaseButton.vue'
 </script>
 
 <template>
-  <div class="flex flex-col">
-   
-    <main class="">
-      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">About Bike Guide</h1>
-        
-        <section class="mb-8">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
-          <p class="text-gray-600 leading-relaxed">
-            Bike Guide is dedicated to helping cyclists of all levels find the perfect routes for their adventures.
-            Whether you're a beginner looking for a casual ride or an experienced cyclist seeking new challenges,
-            we've got you covered.
-          </p>
-        </section>
-
-        <section class="mb-8">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Features</h2>
-          <ul class="space-y-2">
-            <li class="flex items-start">
-              <span class="text-blue-500 mr-2">•</span>
-              <span class="text-gray-600">Personalized route recommendations based on your skill level</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-500 mr-2">•</span>
-              <span class="text-gray-600">Detailed route information including distance, elevation, and difficulty</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-500 mr-2">•</span>
-              <span class="text-gray-600">User-friendly interface for easy navigation</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-500 mr-2">•</span>
-              <span class="text-gray-600">Save your favorite routes for future reference</span>
-            </li>
-          </ul>
-        </section>
-
-        <section class="mb-8">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Get Started</h2>
-          <p class="text-gray-600 mb-6">
-            Ready to find your next cycling adventure? Create an account and start exploring our curated routes today!
-          </p>
-          <div class="flex gap-4 justify-center">
-            <BaseButton
-              title="Sign Up"
-              link="/signup"
-              variant="primary"
-            />
-            <BaseButton
-              title="Learn More"
-              link="/search"
-              variant="secondary"
-            />
+  <div class="flex flex-col min-h-screen bg-gray-50">
+    <main class="flex-1 flex flex-col items-center justify-center py-16 md:py-24">
+      <div class="max-w-2xl w-full mx-auto bg-white rounded-3xl shadow-lg px-8 py-12 flex flex-col items-center">
+        <h1 class="font-pramukh text-5xl sm:text-6xl text-gray-900 mb-4 text-center">Meet the Developers</h1>
+        <p class="font-poppins text-lg text-gray-600 mb-8 text-center max-w-xl">
+          Bike Guide was created by two friends passionate about cycling and technology. The project was built from scratch with a focus on user experience, modern web technologies, and a love for adventure. Every feature, from route search to the animated landing page, was designed and coded collaboratively, with countless hours spent on design, development, and testing to make the perfect cycling companion.
+        </p>
+        <div class="flex flex-row gap-10 mb-8">
+          <div class="flex flex-col items-center">
+            <img  alt="Jonathan Ahlström" class="w-32 h-32 rounded-full object-cover border-4 border-blue-200 shadow-lg mb-3" />
+            <span class="font-pramukh text-xl text-gray-900">Jonathan Ahlström</span>
+            <div class="flex gap-3 mt-1">
+              <a href="https://www.linkedin.com/in/jonathanahlstrom/" target="_blank" rel="noopener" class="text-blue-600 font-poppins hover:underline">LinkedIn</a>
+              <a href="https://github.com/jonahlstrom" target="_blank" rel="noopener" class="text-gray-700 font-poppins hover:underline">GitHub</a>
+            </div>
           </div>
-        </section>
+          <div class="flex flex-col items-center">
+            <img  alt="[Friend's Name]" class="w-32 h-32 rounded-full object-cover border-4 border-blue-200 shadow-lg mb-3" />
+            <span class="font-pramukh text-xl text-gray-900">[Friend's Name]</span>
+            <div class="flex gap-3 mt-1">
+              <a href="[Friend_LinkedIn]" target="_blank" rel="noopener" class="text-blue-600 font-poppins hover:underline">LinkedIn</a>
+              <a href="[Friend_GitHub]" target="_blank" rel="noopener" class="text-gray-700 font-poppins hover:underline">GitHub</a>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-
   </div>
 </template>
+
+<style scoped>
+.font-pramukh {
+  font-family: 'Pramukh Rounded', sans-serif;
+}
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+</style>
 

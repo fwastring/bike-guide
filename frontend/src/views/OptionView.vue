@@ -2,9 +2,9 @@
   <div class="h-screen flex flex-col">
     <main class="flex-1 overflow-y-auto bg-gray-50">
       <!-- Mini Search Card at the top (visible only on sm and above) -->
-      <div class="hidden sm:block w-full bg-white py-4 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6">
-          <MiniSearchCard @search="handleSearch" />
+      <div class="w-full  bg-white py-4 shadow-sm">
+        <div class="max-w-lg mx-auto px-6">
+          <MiniSearchCard @search="handleSearch" :mobile="true" />
         </div>
       </div>
       
@@ -49,12 +49,7 @@
         </div>
       </div>
       
-      <!-- Mini Search Card at the bottom (visible only on mobile) -->
-      <div class="sm:hidden fixed bottom-0 left-0 right-0 w-full bg-white py-4 shadow-lg border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-6">
-          <MiniSearchCard @search="handleSearch" />
-        </div>
-      </div>
+    
       
       <Footer class="mb-20 sm:mb-0" />
     </main>

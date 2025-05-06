@@ -5,7 +5,7 @@ interface Props {
   placeholder?: string
   modelValue?: string
   error?: string
-  big?: boolean
+  mobile?: boolean
   errorBorder?: boolean
 }
 
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
   placeholder: '',
   modelValue: '',
   error: '',
-  big: false,
+  mobile: false,
   errorBorder: false
 })
 
@@ -32,9 +32,9 @@ const emit = defineEmits(['update:modelValue'])
       :class="[
         'w-full border-[0.5px] bg-white border text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent  rounded-full',
         error ? 'border-red-500' : 'border-gray-300',
-        big
-          ? 'px-6 pr-16 py-4 text-base h-14 border-2'
-          : 'px-3 py-2 text-sm',
+        mobile
+          ? 'px-3 py-2 text-sm h-10'
+          : 'px-6 pr-16 py-4 text-base h-14 border-2',
         errorBorder ? 'ring-1 outline-none ring-blue-500 ' : ''
       ]"
     />

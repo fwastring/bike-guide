@@ -90,14 +90,6 @@ const scrollToSearch = () => {
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Pramukh Rounded';
-  src: url('@/assets/fonts/PramukhRounded-Medium.woff2') format('woff2'),
-       url('@/assets/fonts/PramukhRounded-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
 
 @font-face {
   font-family: 'Pramukh Rounded';

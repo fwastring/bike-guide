@@ -29,15 +29,36 @@ const handleSearch = () => {
 }
 
 const handleLocation = async (location: { lat: number; lng: number }) => {
-  // Dummy location logic; replace with real geolocation if needed
-  address.value = 'Current Location (Demo)'
-  errorMessage.value = ''
+  try {
+    // Get user's current position
+    const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject)
+    })
+
+    const { latitude, longitude } = position.coords
+
+    // Reverse geocode the coordinates to get the address
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
+    )
+    const data = await response.json()
+    
+    if (data.display_name) {
+      address.value = data.display_name
+      errorMessage.value = ''
+    } else {
+      throw new Error('Could not get address from coordinates')
+    }
+  } catch (error) {
+    console.error('Error getting location:', error)
+    errorMessage.value = 'Could not get your location. Please enter an address manually.'
+  }
 }
 </script>
 
 <template>
   <div class="relative w-full">
-    <form @submit.prevent="handleSearch" class="flex flex-col sm:flex-row items-center gap-3 w-full sm:max-w-3xl mx-auto">
+    <form @submit.prevent="handleSearch" class="flex flex-col sm:flex-row items-center gap-3 w-full sm:max-w-3xl mx-auto px-2">
       <div class="relative flex-1 w-full">
         <InputField
           v-model="address"

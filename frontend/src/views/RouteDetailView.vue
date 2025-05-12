@@ -11,12 +11,19 @@
         <template v-if="currentRoute">
           <ResultCard
             :title="currentRoute.title"
+            subtitle="Route Details"
             :distance="currentRoute.distance"
-            :elevation="'—'"
-            :difficulty="currentRoute.difficulty"
-            :description="currentRoute.description"
-            :highlights="[]"
-            :mapUrl="''"
+            elevationGain="—"
+            avgGrade="—"
+            lowestElev="—"
+            highestElev="—"
+            elevDifference="—"
+            attempts="0 attempts"
+            stars="0 stars"
+            mapImageUrl="/placeholder-route.jpg"
+            elevationChartUrl="/placeholder-elevation.jpg"
+            :mapUrl="currentRoute.imageUrl || ''"
+            gpxUrl=""
           />
         </template>
         <div v-else class="text-center py-12">

@@ -39,13 +39,8 @@ const toggleLanguage = () => {
         <RouterLink to="/about" class="text-gray-800 no-underline px-2 py-1 font-medium hover:opacity-80 transition-opacity">{{ t('navigation.about') }}</RouterLink>
         <span class="h-6 w-px bg-gray-200 mx-1"></span>
         <RouterLink to="/help" class="text-gray-800 no-underline px-2 py-1 font-medium hover:opacity-80 transition-opacity">{{ t('navigation.help') }}</RouterLink>
-        <span class="h-6 w-px bg-gray-200 mx-1"></span>
-        <BaseButton 
-          :title="t('navigation.experimental')"
-          variant="secondary" 
-          link="/experimental"
-          class="px-2 py-1 font-medium !rounded-full !bg-transparent !border-0 text-gray-800 hover:bg-gray-100 transition-colors"
-        />
+   
+        
       </div>
       
       <!-- Right: Language Switcher and Log In -->

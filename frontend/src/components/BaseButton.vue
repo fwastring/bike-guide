@@ -24,7 +24,7 @@ const emit = defineEmits(['click'])
     :to="link"
     class="inline-block px-6 py-2 rounded-full font-medium text-center transition-all duration-200"
     :class="{
-      'bg-[#8E7DBE] cursor-pointer  shadow-md text-white hover:bg-[#7D6CAE]': variant === 'primary',
+      'bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] cursor-pointer shadow-md text-white hover:bg-[#7D6CAE] hover:scale-105 hover:shadow-lg transition-transform': variant === 'primary',
       'bg-blue-50 text-purple-500 hover:bg-blue-100': variant === 'secondary',
       'text-purple-500 hover:text-purple-600 underline px-2 py-1': variant === 'tertiary'
     }"
@@ -37,7 +37,7 @@ const emit = defineEmits(['click'])
     :disabled="disabled"
     class="inline-block px-6 py-2 rounded-full font-medium text-center transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
     :class="{
-      'bg-[#8E7DBE] cursor-pointer shadow-md text-white hover:bg-[#7D6CAE]': variant === 'primary',
+      'bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] cursor-pointer shadow-md text-white hover:bg-[#7D6CAE] hover:scale-105 hover:shadow-lg transition-transform': variant === 'primary',
       'bg-blue-50 text-purple-500 hover:bg-blue-100': variant === 'secondary',
       'text-purple-500 hover:text-purple-600 underline px-2 py-1': variant === 'tertiary'
     }"

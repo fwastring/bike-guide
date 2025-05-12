@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import BaseButton from '../components/BaseButton.vue'
 import { useRouter } from 'vue-router'
 import Header from '../components/Header.vue'
-import { MapPin, Map, Bike } from 'lucide-vue-next'
+import { MapPin, Map, Bike, ArrowRight } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 
 const router = useRouter()
@@ -13,50 +13,143 @@ const handleGetStarted = () => {
   router.push('/search')
 }
 
+// Animation on scroll effect
+const isVisible = ref([false, false, false])
+
+const checkVisibility = () => {
+  const cards = document.querySelectorAll('.step-card')
+  cards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect()
+    if (rect.top <= window.innerHeight * 0.8) {
+      isVisible.value[index] = true
+    }
+  })
+}
+
+onMounted(() => {
+  checkVisibility()
+  window.addEventListener('scroll', checkVisibility)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', checkVisibility)
+})
 </script>
 
 <template>
-  <section class="relative py-20 md:py-32 bg-gray-50 overflow-hidden">
-    <img
-      src="@/assets/mapbackground.jpg"
-      alt="Map background"
-      class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none z-0 will-change-transform transition-transform duration-300"
-      aria-hidden="true"
-    />
-    <div
-      class="absolute inset-0 w-full h-full z-0 pointer-events-none select-none bg-blue-500 opacity-20 mix-blend-multiply will-change-transform transition-transform duration-300"
-    ></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-8 sm:px-10 lg:px-12">
-      <div class="text-center mb-20">
-        <h2 class="font-pramukh text-6xl sm:text-6xl lg:text-7xl text-gray-600 mb-4 sm:mb-6">{{ t('onboarding.title') }}</h2>
-        <p class="font-poppins text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">{{ t('onboarding.subtitle') }}</p>
+  <section class="relative min-h-screen py-20 md:py-32 bg-gradient-to-b from-blue-50 to-indigo-50 overflow-hidden">
+    <!-- Animated background pattern -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 opacity-10">
+        <img
+          src="@/assets/mapbackground.jpg"
+          alt="Map background"
+          class="absolute inset-0 w-full h-full object-cover pointer-events-none select-none will-change-transform"
+          aria-hidden="true"
+        />
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      
+      <!-- Abstract shapes -->
+      <div class="absolute top-20 left-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div class="absolute top-40 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-40 left-1/3 w-80 h-80 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-10 lg:px-12">
+      <!-- Hero section -->
+      <div class="text-center mb-16 md:mb-24">
+     
+        
+        <h1 class="font-pramukh text-5xl sm:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 mb-6 leading-tight max-w-5xl mx-auto">
+          {{ t('onboarding.title') }}
+        </h1>
+        
+        <p class="font-poppins text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+          {{ t('onboarding.subtitle') }}
+        </p>
+        
+        
+      </div>
+      
+      <!-- Steps grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 max-w-6xl mx-auto">
         <!-- Step 1 -->
-        <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow">
-          <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <MapPin class="w-10 h-10 text-blue-600" />
+        <div 
+          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          :class="{ 'animate-fadeIn': isVisible[0] }"
+        >
+          <div class="mb-8 relative">
+            <div class="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl transform -rotate-6"></div>
+            <div class="relative w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
+              <MapPin class="w-8 h-8 text-blue-600" />
+            </div>
           </div>
-          <h3 class="font-poppins text-2xl font-semibold text-gray-900 mb-3 text-center">{{ t('onboarding.steps.find.title') }}</h3>
-          <p class="font-poppins text-gray-600 text-center">{{ t('onboarding.steps.find.description') }}</p>
+          
+          <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full mb-3">
+            {{ t('onboarding.steps.find.step', 'Step 1') }}
+          </span>
+          
+          <h3 class="font-poppins text-2xl font-bold text-gray-900 mb-4">
+            {{ t('onboarding.steps.find.title') }}
+          </h3>
+          
+          <p class="font-poppins text-gray-600">
+            {{ t('onboarding.steps.find.description') }}
+          </p>
         </div>
+        
         <!-- Step 2 -->
-        <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow">
-          <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <Map class="w-10 h-10 text-blue-600" />
+        <div 
+          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          :class="{ 'animate-fadeIn animation-delay-300': isVisible[1] }"
+        >
+          <div class="mb-8 relative">
+            <div class="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-2xl transform -rotate-6"></div>
+            <div class="relative w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center">
+              <Map class="w-8 h-8 text-indigo-600" />
+            </div>
           </div>
-          <h3 class="font-poppins text-2xl font-semibold text-gray-900 mb-3 text-center">{{ t('onboarding.steps.choose.title') }}</h3>
-          <p class="font-poppins text-gray-600 text-center">{{ t('onboarding.steps.choose.description') }}</p>
+          
+          <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full mb-3">
+            {{ t('onboarding.steps.choose.step', 'Step 2') }}
+          </span>
+          
+          <h3 class="font-poppins text-2xl font-bold text-gray-900 mb-4">
+            {{ t('onboarding.steps.choose.title') }}
+          </h3>
+          
+          <p class="font-poppins text-gray-600">
+            {{ t('onboarding.steps.choose.description') }}
+          </p>
         </div>
+        
         <!-- Step 3 -->
-        <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow">
-          <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <Bike class="w-10 h-10 text-blue-600" />
+        <div 
+          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          :class="{ 'animate-fadeIn animation-delay-600': isVisible[2] }"
+        >
+          <div class="mb-8 relative">
+            <div class="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl transform -rotate-6"></div>
+            <div class="relative w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center">
+              <Bike class="w-8 h-8 text-purple-600" />
+            </div>
           </div>
-          <h3 class="font-poppins text-2xl font-semibold text-gray-900 mb-3 text-center">{{ t('onboarding.steps.go.title') }}</h3>
-          <p class="font-poppins text-gray-600 text-center">{{ t('onboarding.steps.go.description') }}</p>
+          
+          <span class="inline-block px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded-full mb-3">
+            {{ t('onboarding.steps.go.step', 'Step 3') }}
+          </span>
+          
+          <h3 class="font-poppins text-2xl font-bold text-gray-900 mb-4">
+            {{ t('onboarding.steps.go.title') }}
+          </h3>
+          
+          <p class="font-poppins text-gray-600">
+            {{ t('onboarding.steps.go.description') }}
+          </p>
         </div>
       </div>
+      
+      
     </div>
   </section>
 </template>
@@ -68,5 +161,55 @@ const handleGetStarted = () => {
 
 .font-poppins {
   font-family: 'Poppins', sans-serif;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 </style>

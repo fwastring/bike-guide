@@ -11,11 +11,18 @@ import { RouterLink } from 'vue-router'
       </div>
       <div class="space-y-2">
         <h4 class="text-lg font-medium">Quick Links</h4>
-        <RouterLink to="/about" class="block text-gray-300 hover:text-white transition-colors">About</RouterLink>
+        <RouterLink to="/" class="block text-gray-300 hover:text-white transition-colors">Home</RouterLink>
         <RouterLink to="/search" class="block text-gray-300 hover:text-white transition-colors">Search</RouterLink>
+        <RouterLink to="/options" class="block text-gray-300 hover:text-white transition-colors">Options</RouterLink>
+        <RouterLink to="/onboarding" class="block text-gray-300 hover:text-white transition-colors">Onboarding</RouterLink>
+        <RouterLink to="/about" class="block text-gray-300 hover:text-white transition-colors">About</RouterLink>
+        <RouterLink to="/experimental" class="block text-gray-300 hover:text-white transition-colors">Experimental</RouterLink>
       </div>
       <div class="space-y-2">
-        <h4 class="text-lg font-medium">Legal</h4>
+        <h4 class="text-lg font-medium">Account</h4>
+        <RouterLink to="/login" class="block text-gray-300 hover:text-white transition-colors">Login</RouterLink>
+        <RouterLink to="/signup" class="block text-gray-300 hover:text-white transition-colors">Sign Up</RouterLink>
+        <h4 class="text-lg font-medium mt-4">Legal</h4>
         <RouterLink to="/privacy" class="block text-gray-300 hover:text-white transition-colors">Privacy Policy</RouterLink>
         <RouterLink to="/terms" class="block text-gray-300 hover:text-white transition-colors">Terms of Service</RouterLink>
       </div>

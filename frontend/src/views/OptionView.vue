@@ -3,12 +3,12 @@
     <main class="flex-1 overflow-y-auto bg-gray-50">
         <!-- Mini Search Card at the top -->
       <div class="w-full bg-white py-4 shadow-sm">
-        <div class="max-w-lg mx-auto px-6">
+        <div class="max-w-lg mx-auto">
           <MiniSearchCard @search="handleSearch" :mobile="true" />
         </div>
       </div>
       
-      <div class="max-w-3xl mx-auto px-6 py-8 space-y-8">
+      <div class="max-w-3xl px-4 sm:px-22 py-8 space-y-8">
         <!-- Search Summary -->
         <div>
           <SummaryCard 

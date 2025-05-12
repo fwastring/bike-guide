@@ -206,16 +206,17 @@
                 <h3 class="text-xl font-semibold text-gray-700">Result Card</h3>
                 <ResultCard
                   title="Scenic Coastal Route"
+                  subtitle="A beautiful coastal ride"
                   distance="20km"
-                  elevation="150m"
-                  difficulty="Moderate"
-                  description="A beautiful ride along the coast with stunning ocean views. Perfect for intermediate cyclists looking for a scenic route."
-                  :highlights="[
-                    'Stunning coastal views',
-                    'Well-maintained paths',
-                    'Multiple rest stops',
-                    'Café at the halfway point'
-                  ]"
+                  elevationGain="150m"
+                  avgGrade="2.5%"
+                  lowestElev="0m"
+                  highestElev="150m"
+                  elevDifference="150m"
+                  attempts="150 attempts"
+                  stars="4.5 stars"
+                  mapImageUrl="/placeholder-route.jpg"
+                  elevationChartUrl="/placeholder-elevation.jpg"
                   mapUrl="https://maps.example.com/route/1"
                   gpxUrl="https://maps.example.com/route/1.gpx"
                 />

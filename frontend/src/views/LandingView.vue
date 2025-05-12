@@ -10,6 +10,7 @@ import OnboardingView from './OnboardingView.vue'
 import AboutView from './AboutView.vue'
 import WindBackground from '../components/WindBackground.vue'
 import { useI18n } from 'vue-i18n'
+import SearchCard from '../components/SearchCard.vue'
 
 const searchStore = useSearchStore()
 const searchSection = ref<HTMLElement | null>(null)
@@ -66,8 +67,8 @@ const scrollToSearch = () => {
           <h1 class="font-pramukh text-7xl sm:text-8xl lg:text-8xl text-gray-900 mb-2 sm:mb-4">{{ t('landing.hero.title') }}</h1>
           
           <p class="font-poppins tracking-tight font-medium sm:text-lg text-gray-600 mb-2">{{ t('landing.hero.description') }}</p>
-          <div class="w-full mt-6">
-            <MiniSearchCard @search="handleSearch" />
+          <div class="w-full max-w-3xl mx-auto">
+            <SearchCard @search="handleSearch" />
           </div>
         </div>
       </section>

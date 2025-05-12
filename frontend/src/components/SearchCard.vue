@@ -1,136 +1,100 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
-import BaseButton from './BaseButton.vue'
+import InputField from './InputField.vue'
 import LocationButton from './LocationButton.vue'
-import IconButton from './IconButton.vue'
-import { Settings } from 'lucide-vue-next'
-import { CirclePlus } from 'lucide-vue-next'
+import BaseButton from './BaseButton.vue'
+import { useScrollTo } from '@/composables/useScrollTo'
 
-interface SearchData {
-  address: string
-  difficulty: string
-  distance: string
+const router = useRouter()
+const emit = defineEmits(['search'])
+const address = ref('')
+const difficulty = 'Medium'
+const distance = '20-30 km'
+const errorMessage = ref('')
+const isMobile = ref(window.innerWidth < 640)
+const { scrollToSection } = useScrollTo()
+
+// Responsive: isMobile is true if window width < 640px (sm)
+const windowWidth = ref(window.innerWidth)
+const updateWidth = () => { windowWidth.value = window.innerWidth }
+onMounted(() => window.addEventListener('resize', updateWidth))
+onUnmounted(() => window.removeEventListener('resize', updateWidth))
+
+const scrollToOnboarding = () => {
+  scrollToSection('onboarding')
 }
 
-const emit = defineEmits(['search'])
-const router = useRouter()
-
-const address = ref('')
-const difficulty = ref('Medium')
-const distance = ref('20-30 km')
-
-const difficultyOptions = ['Easy', 'Medium', 'Hard']
-const distanceOptions = ['5-10 km', '10-20 km', '20-30 km', '30-40 km', '40+ km']
-
-const handleSearch = async () => {
-  const searchData = {
-    address: address.value,
-    difficulty: difficulty.value,
-    distance: distance.value
+const handleSearch = () => {
+  if (!address.value.trim()) {
+    errorMessage.value = 'Please enter a location to search for routes.'
+    return
   }
-  emit('search', searchData)
-  try {
-    await router.push('/options')
-  } catch (error) {
-    console.error('Navigation failed:', error)
-  }
+  errorMessage.value = ''
+  emit('search', { address: address.value, difficulty, distance })
 }
 
 const handleLocation = async (location: { lat: number; lng: number }) => {
-  try {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.lng}`
-    )
-    const data = await response.json()
-    address.value = data.display_name
-  } catch (error) {
-    console.error('Error getting address:', error)
-  }
+  // Dummy location logic; replace with real geolocation if needed
+  address.value = 'Current Location (Demo)'
+  errorMessage.value = ''
 }
 </script>
 
 <template>
-  <div class="bg-[#FBFBFB] p-4 sm:p-6 rounded-3xl border border-gray-300 max-w-prose border-[0.5px]">
-    <h2 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Find Your Route</h2>
-    
-    <!-- Address Input -->
-    <div class="space-y-1.5 mb-4">
-      <label class="block text-sm sm:text-base font-medium text-gray-800">Search for a place or address</label>
-      <div class="relative">
-        <input
+  <div class="relative w-full">
+    <form @submit.prevent="handleSearch" class="flex flex-col sm:flex-row items-center gap-4 w-full sm:max-w-3xl mx-auto">
+      <div class="relative flex-1 w-full">
+        <InputField
           v-model="address"
-          type="text"
           placeholder="Vägvägen 7"
-          class="w-full pl-3 pr-8 py-2 bg-white border border-gray-300 rounded-full text-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent border-[0.5px]"
+          :mobile="isMobile"
+          :errorBorder="!!errorMessage"
+          class="w-full"
         />
-        <div class="absolute right-2 top-1/2 -translate-y-1/2">
-          <LocationButton @location="handleLocation" />
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
+          <LocationButton @location="handleLocation" class="!bg-transparent !shadow-none !p-0 !w-7 !h-7" />
         </div>
       </div>
-    </div>
-
-    <!-- Add Destination -->
-    <button class="flex items-center gap-1.5 text-sm text-gray-800 mb-4 hover:text-purple-500 transition-colors">
-      <CirclePlus class="h-4 w-4" />
-      <span>Add destination</span>
-    </button>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-      <!-- Difficulty Dropdown -->
-      <div class="space-y-1.5">
-        <label class="block text-sm sm:text-base font-medium text-gray-800">Difficulty</label>
-        <div class="relative">
-          <select
-            v-model="difficulty"
-            class="w-full appearance-none px-3 py-2 bg-white border border-gray-300 rounded-full text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent border-[0.5px]"
-          >
-            <option v-for="option in difficultyOptions" :key="option" :value="option">
-              {{ option }}
-            </option>
-          </select>
-          <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
+      <template v-if="isMobile">
+        <div class="flex flex-row gap-2 w-full">
+          <BaseButton
+            title="Help"
+            variant="secondary"
+            class="h-10 px-6 text-base rounded-full whitespace-nowrap w-1/2"
+            type="button"
+            @click="scrollToOnboarding"
+          />
+          <BaseButton
+            title="Find Route"
+            variant="primary"
+            class="h-10 px-6 text-base rounded-full whitespace-nowrap w-2/3"
+            type="submit"
+            hover="bg-primary-dark"
+            cursor="pointer"
+          />
         </div>
+      </template>
+      <template v-else>
+        <BaseButton
+          title="Find Route"
+          variant="primary"
+          class="h-14 px-10 text-lg rounded-full whitespace-nowrap w-full sm:w-auto"
+          type="submit"
+        />
+      </template>
+    </form>
+    <transition
+      enter-active-class="transition-opacity duration-500"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition-opacity duration-300"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div v-if="errorMessage" class="absolute left-1/2 -translate-x-1/2 mt-2 w-full flex justify-center pointer-events-none z-20">
+        <span class="text-blue-500 text-md font-semibold  bg-opacity-80 px-3 py-1 ">{{ errorMessage }}</span>
       </div>
-
-      <!-- Distance Dropdown -->
-      <div class="space-y-1.5">
-        <label class="block text-sm sm:text-base font-medium text-gray-800">Distance</label>
-        <div class="relative">
-          <select
-            v-model="distance"
-            class="w-full appearance-none px-3 py-2 bg-white border border-gray-300 rounded-full text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent border-[0.5px]"
-          >
-            <option v-for="option in distanceOptions" :key="option" :value="option">
-              {{ option }}
-            </option>
-          </select>
-          <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex justify-between mb-4 space-x-3">
-      <BaseButton
-        title="Find route!"
-        variant="primary"
-        class="w-full flex items-center justify-center px-4 py-2 text-sm font-medium"
-        @click="handleSearch"
-      >
-        <span>Find route!</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </BaseButton>
-      <IconButton title="Settings" :icon="Settings" variant="secondary" size="md" />
-    </div>
+    </transition>
   </div>
-</template>
+</template> 

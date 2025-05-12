@@ -14,31 +14,30 @@ const emit = defineEmits(['edit'])
 </script>
 
 <template>
-  <div class="bg-[#FBFBFB] p-4 sm:p-6 rounded-2xl border border-gray-300 border-[0.5px] w-full">
-    <div class="space-y-1 text-md">
-      <div class="flex items-baseline">
-        <span class="font-bold text-gray-900">Location: &nbsp;</span>
-        <span class="text-gray-900">{{ location }}</span>
+  <div class="w-full">
+    <!-- Large Address Display -->
+    <h1 class="font-pramukh text-4xl sm:text-5xl lg:text-6xl text-gray-900 mb-6">
+      {{ location }}
+    </h1>
+
+    <!-- Info Boxes -->
+    <div class="flex flex-wrap gap-4 mb-6">
+      <div class="bg-gray-100 px-4 py-2 rounded-full">
+        <span class="text-sm font-medium text-gray-600">Difficulty</span>
+        <span class="ml-2 text-gray-900">{{ difficulty }}</span>
       </div>
       
-      <div class="flex items-baseline">
-        <span class="font-bold text-gray-900">Difficulty: &nbsp;</span>
-        <span class="text-gray-900">{{ difficulty }}</span>
-      </div>
-      
-      <div class="flex items-baseline">
-        <span class="font-bold text-gray-900">Distance: &nbsp;</span>
-        <span class="text-gray-900">{{ distance }}</span>
+      <div class="bg-gray-100 px-4 py-2 rounded-full">
+        <span class="text-sm font-medium text-gray-600">Distance</span>
+        <span class="ml-2 text-gray-900">{{ distance }}</span>
       </div>
     </div>
 
-    <div class="flex justify-between items-center mt-6">
-      <BaseButton
-        title="Edit"
-        variant="secondary"
-        class="w-full flex items-center justify-center px-4 py-2 text-sm font-medium mr-3"
-        @click="emit('edit')"
-      />
-    </div>
   </div>
-</template> 
+</template>
+
+<style scoped>
+.font-pramukh {
+  font-family: 'Pramukh Rounded', sans-serif;
+}
+</style> 

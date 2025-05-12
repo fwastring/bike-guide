@@ -4,6 +4,9 @@ import SearchCard from '../components/SearchCard.vue'
 import MapCard from '../components/MapCard.vue'
 import Header from '../components/Header.vue'
 import { useSearchStore } from '@/stores/searchStore'
+import { useRouter } from 'vue-router'
+import Footer from '../components/Footer.vue'
+import LegacySearchCard from '../components/LegacySearchCard.vue'
 
 const searchStore = useSearchStore()
 
@@ -17,7 +20,9 @@ const handleSearch = (searchData: { address: string; difficulty: string; distanc
     
     <!-- Search Panel -->
     <div class="w-full md:w-1/3">
-      <SearchCard @search="handleSearch" />
+      <div class="w-full max-w-3xl mx-auto px-4">
+        <LegacySearchCard @search="handleSearch" />
+      </div>
     </div>
 
     <!-- Map Panel -->

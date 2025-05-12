@@ -1,55 +1,32 @@
 <template>
   <div class="h-screen flex flex-col">
     <main class="flex-1 overflow-y-auto bg-gray-50">
-      <!-- Mini Search Card at the top (visible only on sm and above) -->
-      <div class="w-full  bg-white py-4 shadow-sm">
+        <!-- Mini Search Card at the top -->
+      <div class="w-full bg-white py-4 shadow-sm">
         <div class="max-w-lg mx-auto px-6">
           <MiniSearchCard @search="handleSearch" :mobile="true" />
         </div>
       </div>
       
-      <div class="flex flex-col md:flex-row max-w-7xl mx-auto p-6 md:space-x-6">
-        <!-- Left Panel: Summary -->
-        <div class="w-full md:w-1/3">
-          <!-- Search Summary -->
-          <div class="mb-8">
-            <SummaryCard :location="searchStore.searchParams.address" :difficulty="searchStore.searchParams.difficulty"
-              :distance="searchStore.searchParams.distance" @edit="handleEdit" />
-          </div>
-<section class="flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto w-full gap-6 sm:gap-4">
-      </section>
-          <!-- Loading State -->
-          <div v-if="searchStore.isLoading" class="flex justify-center items-center py-12">
-            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          </div>
-
-          <!-- Error State -->
-          <div v-else-if="searchStore.error" class="text-center py-12">
-            <p class="text-red-600 text-sm">{{ searchStore.error }}</p>
-            <button @click="searchStore.fetchRouteOptions()"
-              class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium">
-              Try Again
-            </button>
-          </div>
-
-          <!-- Map (hidden on mobile) -->
-          <div class="hidden md:block">
-            <MapCard />
-          </div>
+      <div class="max-w-3xl mx-auto px-6 py-8 space-y-8">
+        <!-- Search Summary -->
+        <div>
+          <SummaryCard 
+            :location="searchStore.searchParams.address" 
+            :difficulty="searchStore.searchParams.difficulty"
+            :distance="searchStore.searchParams.distance" 
+            @edit="handleEdit" 
+          />
         </div>
 
-        <!-- Right Panel: Route Options (full width on mobile) -->
-        <div class="w-full md:w-2/3">
-          <div class="mb-8"> 
-            <div v-if="searchStore.routeOptions.length === 0" class="text-center py-12">
-              <p class="text-sm text-gray-600">No routes found matching your criteria.</p>
-            </div>
-            <OptionListCard v-else :options="searchStore.routeOptions" @expand="handleExpand" />
+        <!-- Route Options -->
+        <div>
+          <div v-if="searchStore.routeOptions.length === 0" class="text-center py-12">
+            <p class="text-sm text-gray-600">No routes found matching your criteria.</p>
           </div>
+          <OptionListCard v-else :options="searchStore.routeOptions" @expand="handleExpand" />
         </div>
       </div>
-      
-    
       
       <Footer class="mb-20 sm:mb-0" />
     </main>
@@ -63,9 +40,7 @@ import { useSearchStore } from '@/stores/searchStore'
 import Footer from '../components/Footer.vue'
 import SummaryCard from '../components/SummaryCard.vue'
 import OptionListCard from '../components/OptionListCard.vue'
-import MapCard from '../components/MapCard.vue'
 import MiniSearchCard from '../components/MiniSearchCard.vue'
-
 
 const router = useRouter()
 const searchStore = useSearchStore()

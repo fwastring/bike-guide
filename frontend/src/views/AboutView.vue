@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Footer from '../components/Footer.vue'
 import { useI18n } from 'vue-i18n'
+import { Linkedin, Github } from 'lucide-vue-next'
 
 const { t } = useI18n()
 </script>
@@ -23,58 +24,74 @@ const { t } = useI18n()
             <!-- Right: Team Photos -->
             <div class="flex flex-col gap-16 order-1 md:order-2">
               <!-- Jonathan -->
-              <div class="flex flex-col items-center text-center">
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
                 <img 
                   src="@/assets/jonathan.jpeg" 
                   alt="Jonathan Ahlström" 
-                  class="w-48 h-48 rounded-full object-cover shadow-lg mb-6" 
+                  class="w-32 h-32 rounded-full object-cover shadow-lg" 
                 />
-                <h2 class="font-pramukh text-3xl text-gray-900 mb-2">Jonathan Ahlström</h2>
-                <div class="flex gap-4 mt-2">
-                  <a 
-                    href="https://www.linkedin.com/in/jonathanahlstrom/" 
-                    target="_blank" 
-                    rel="noopener" 
-                    class="text-blue-600 font-poppins hover:underline"
-                  >
-                    {{ t('about.links.linkedin') }}
-                  </a>
-                  <a 
-                    href="https://github.com/jonahlstrom" 
-                    target="_blank" 
-                    rel="noopener" 
-                    class="text-gray-700 font-poppins hover:underline"
-                  >
-                    {{ t('about.links.github') }}
-                  </a>
+                <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+                  <h2 class="text-2xl text-gray-900 mb-2">Jonathan Ahlström</h2>
+                  <div class="flex gap-4">
+                    <a 
+                      href="https://www.linkedin.com/in/jonathanahlstrom/" 
+                      target="_blank" 
+                      rel="noopener" 
+                      class="text-blue-600 font-poppins hover:text-blue-700 transition-colors flex items-center gap-2"
+                    >
+                      <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                        <Linkedin class="w-4 h-4" />
+                      </div>
+                      <span>{{ t('about.links.linkedin') }}</span>
+                    </a>
+                    <a 
+                      href="https://github.com/jonahlstrom" 
+                      target="_blank" 
+                      rel="noopener" 
+                      class="text-gray-700 font-poppins hover:text-gray-800 transition-colors flex items-center gap-2"
+                    >
+                      <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Github class="w-4 h-4" />
+                      </div>
+                      <span>{{ t('about.links.github') }}</span>
+                    </a>
+                  </div>
                 </div>
               </div>
 
               <!-- Fredrik -->
-              <div class="flex flex-col items-center text-center">
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
                 <img 
                   src="@/assets/fredrik.jpeg" 
                   alt="Fredrik" 
-                  class="w-48 h-48 rounded-full object-cover shadow-lg mb-6" 
+                  class="w-32 h-32 rounded-full object-cover shadow-lg" 
                 />
-                <h2 class="font-pramukh text-3xl text-gray-900 mb-2">Fredrik</h2>
-                <div class="flex gap-4 mt-2">
-                  <a 
-                    href="[Friend_LinkedIn]" 
-                    target="_blank" 
-                    rel="noopener" 
-                    class="text-blue-600 font-poppins hover:underline"
-                  >
-                    {{ t('about.links.linkedin') }}
-                  </a>
-                  <a 
-                    href="[Friend_GitHub]" 
-                    target="_blank" 
-                    rel="noopener" 
-                    class="text-gray-700 font-poppins hover:underline"
-                  >
-                    {{ t('about.links.github') }}
-                  </a>
+                <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+                  <h2 class="text-2xl text-gray-900 mb-2">Fredrik Wastring</h2>
+                  <div class="flex gap-4">
+                    <a 
+                      href="[Friend_LinkedIn]" 
+                      target="_blank" 
+                      rel="noopener" 
+                      class="text-blue-600 font-poppins hover:text-blue-700 transition-colors flex items-center gap-2"
+                    >
+                      <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                        <Linkedin class="w-4 h-4" />
+                      </div>
+                      <span>{{ t('about.links.linkedin') }}</span>
+                    </a>
+                    <a 
+                      href="[Friend_GitHub]" 
+                      target="_blank" 
+                      rel="noopener" 
+                      class="text-gray-700 font-poppins hover:text-gray-800 transition-colors flex items-center gap-2"
+                    >
+                      <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Github class="w-4 h-4" />
+                      </div>
+                      <span>{{ t('about.links.github') }}</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

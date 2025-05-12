@@ -7,6 +7,7 @@ interface Props {
   error?: string
   mobile?: boolean
   errorBorder?: boolean
+  compact?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -15,7 +16,8 @@ const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
   error: '',
   mobile: false,
-  errorBorder: false
+  errorBorder: false,
+  compact: false
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -30,9 +32,9 @@ const emit = defineEmits(['update:modelValue'])
       :value="modelValue"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       :class="[
-        'w-full border-[0.5px] bg-white border text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent  rounded-full',
+        'w-full border-[0.5px] bg-white border text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent rounded-full',
         error ? 'border-red-500' : 'border-gray-300',
-        mobile
+        compact ? 'px-4 py-2 text-sm h-10' : mobile
           ? 'px-3 py-2 text-sm h-10'
           : 'px-6 pr-16 py-4 text-base h-14 border-2',
         errorBorder ? 'ring-1 outline-none ring-blue-500 ' : ''

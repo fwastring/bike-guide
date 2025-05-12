@@ -79,8 +79,8 @@
       </path>
     </svg>
     <!-- Left gradient -->
-    <div class="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-white/100 to-white/0 pointer-events-none"></div>
+    <div class="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-[#FBFBFB]/100 to-[#FBFBFB]/0 pointer-events-none"></div>
     <!-- Right gradient -->
-    <div class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-white/100 to-white/0 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#FBFBFB]/100 to-[#FBFBFB]/0 pointer-events-none"></div>
   </div>
 </template> 

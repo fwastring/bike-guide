@@ -75,7 +75,16 @@
 
                 <div>
                   <h3 class="text-xl font-semibold text-gray-700 mb-4">Search Card</h3>
-                  <SearchCard @search="handleSearch" />
+                  <div class="space-y-6">
+                    <div>
+                      <h4 class="text-base font-medium text-gray-600 mb-3">Regular Search Card</h4>
+                      <SearchCard @search="handleSearch" />
+                    </div>
+                    <div>
+                      <h4 class="text-base font-medium text-gray-600 mb-3">Mini Search Card</h4>
+                      <MiniSearchCard @search="handleSearch" />
+                    </div>
+                  </div>
                 </div>
 
                 <div>
@@ -108,7 +117,13 @@
                     @expand="handleExpand"
                   />
                 </div>
-                
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-700 mb-4">Legacy Search Card</h3>
+                  <div class="w-full max-w-3xl mx-auto px-4">
+                    <LegacySearchCard @search="handleSearch" />
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -228,6 +243,10 @@ import OptionCard from '../components/OptionCard.vue'
 import OptionListCard from '../components/OptionListCard.vue'
 import ResultCard from '../components/ResultCard.vue'
 import type { RouteOption } from '@/types/route'
+import { useRouter } from 'vue-router'
+import { useSearchStore } from '@/stores/searchStore'
+import LegacySearchCard from '../components/LegacySearchCard.vue'
+import MiniSearchCard from '../components/MiniSearchCard.vue'
 
 const handleSearch = (searchData: { address: string; difficulty: string; distance: string }) => {
   console.log('Searching with:', searchData)

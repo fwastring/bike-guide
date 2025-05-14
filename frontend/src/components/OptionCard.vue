@@ -35,7 +35,7 @@ const getDifficultyColor = (difficulty: string) => {
       <div class="w-full aspect-[4/3] sm:w-32 sm:h-32 h-auto rounded-2xl bg-gray-200 overflow-hidden flex-shrink-0">
         <img 
           :src="imageUrl" 
-          :alt="title"
+          :alt="`Route preview for ${title} - ${description}`"
           class="w-full h-full object-cover"
         />
       </div>

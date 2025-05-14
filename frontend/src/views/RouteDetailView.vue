@@ -4,7 +4,7 @@
       <div class="max-w-3xl mx-auto">
         <button
           @click="router.back()"
-          class="mb-6 flex items-center text-blue-600 hover:text-blue-700"
+          class="mb-6 flex items-center text-[#8E7DBE] hover:text-[#7D6CAE]"
         >
           <span class="mr-2">←</span> Back to routes
         </button>
@@ -30,7 +30,7 @@
           <p class="text-gray-600">Route not found.</p>
           <button
             @click="router.push('/options')"
-            class="mt-4 text-blue-600 hover:text-blue-700"
+            class="mt-4 text-[#8E7DBE] hover:text-[#7D6CAE]"
           >
             Return to route options
           </button>

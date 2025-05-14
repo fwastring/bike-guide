@@ -16,6 +16,7 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/options" class="block text-gray-300 hover:text-white transition-colors">Options</RouterLink>
         <RouterLink to="/onboarding" class="block text-gray-300 hover:text-white transition-colors">Onboarding</RouterLink>
         <RouterLink to="/about" class="block text-gray-300 hover:text-white transition-colors">About</RouterLink>
+        <RouterLink to="/help" class="block text-gray-300 hover:text-white transition-colors">Help</RouterLink>
         <RouterLink to="/experimental" class="block text-gray-300 hover:text-white transition-colors">Experimental</RouterLink>
       </div>
       <div class="space-y-2">

@@ -66,13 +66,13 @@ const handleSearch = async (searchData: { address: string; difficulty: string; d
 </script>
 
 <template>
-  <header class="fixed top-0 left-0 right-0 w-full bg-white border-b border-gray-100 z-50">
-    <nav class="max-w-7xl mx-auto flex items-center justify-center md:justify-between h-14 px-4">
+  <header class="fixed top-0 left-0 right-0 w-full bg-white border-b border-gray-100 z-50" role="banner">
+    <nav class="max-w-7xl mx-auto flex items-center justify-center md:justify-between h-10 sm:h-14 px-4" role="navigation" aria-label="Main navigation">
       <!-- Left: Logo and Title -->
       <div class="flex items-center gap-2 min-w-max md:min-w-0">
-        <RouterLink to="/" class="flex items-center gap-2 no-underline hover:opacity-80 transition-opacity">
-          <img :src="Logo" alt="Bike Guide Logo" class="h-8 w-auto" />
-          <span class="text-2xl font-bold text-gray-800">Bike Guide</span>
+        <RouterLink to="/" class="flex items-center gap-1 sm:gap-2 no-underline hover:opacity-80 transition-opacity" aria-label="Bike Guide Home">
+          <img :src="Logo" alt="Bike Guide Logo" class="h-6 sm:h-8 w-auto" />
+          <span class="text-xl sm:text-3xl tracking-tight font-bold text-gray-800">Bike Guide</span>
         </RouterLink>
       </div>
 
@@ -81,15 +81,17 @@ const handleSearch = async (searchData: { address: string; difficulty: string; d
         v-show="showSearch" 
         class="hidden md:block flex-1 max-w-xl mx-4 transition-all duration-300"
         :class="{ 'opacity-0': !scrollStore.hasScrolled && route.path === '/' }"
+        role="search"
+        aria-label="Quick route search"
       >
         <MiniSearchCard @search="handleSearch" mobile="true" />
       </div>
       
       <!-- Right: Navigation Links and Log In -->
-      <div class="hidden md:flex items-center gap-6">
-        <RouterLink to="/about" class="text-gray-800 no-underline px-2 py-1 font-medium hover:opacity-80 transition-opacity">{{ t('navigation.about') }}</RouterLink>
-        <RouterLink to="/help" class="text-gray-800 no-underline px-2 py-1 font-medium hover:opacity-80 transition-opacity">{{ t('navigation.help') }}</RouterLink>
-        <RouterLink to="/login">
+      <div class="hidden md:flex items-center gap-6" role="navigation" aria-label="User navigation">
+        <RouterLink to="/about" class="text-gray-800 no-underline px-2 py-1 font-medium hover:opacity-80 transition-opacity" aria-label="About Bike Guide">{{ t('navigation.about') }}</RouterLink>
+        <RouterLink to="/help" class="text-gray-800 no-underline px-2 py-1 font-medium hover:opacity-80 transition-opacity" aria-label="Get help">{{ t('navigation.help') }}</RouterLink>
+        <RouterLink to="/login" aria-label="Log in to your account">
           <BaseButton
             title="Log in"
             variant="secondary"
@@ -100,12 +102,12 @@ const handleSearch = async (searchData: { address: string; difficulty: string; d
     </nav>
     
     <!-- Mobile Menu Dropdown -->
-    <div v-if="isMenuOpen" class="md:hidden bg-white border-b border-gray-100 shadow-md">
+    <div v-if="isMenuOpen" class="md:hidden bg-white border-b border-gray-100 shadow-md" role="navigation" aria-label="Mobile navigation">
       <div class="flex flex-col p-4 space-y-3">
-        <RouterLink to="/about" class="text-gray-800 no-underline px-2 py-2 font-medium hover:bg-gray-100 rounded-md transition-colors">{{ t('navigation.about') }}</RouterLink>
-        <RouterLink to="/help" class="text-gray-800 no-underline px-2 py-2 font-medium hover:bg-gray-100 rounded-md transition-colors">{{ t('navigation.help') }}</RouterLink>
-        <RouterLink to="/experimental" class="text-gray-800 no-underline px-2 py-2 font-medium hover:bg-gray-100 rounded-md transition-colors">{{ t('navigation.experimental') }}</RouterLink>
-        <RouterLink to="/login">
+        <RouterLink to="/about" class="text-gray-800 no-underline px-2 py-2 font-medium hover:bg-gray-100 rounded-md transition-colors" aria-label="About Bike Guide">{{ t('navigation.about') }}</RouterLink>
+        <RouterLink to="/help" class="text-gray-800 no-underline px-2 py-2 font-medium hover:bg-gray-100 rounded-md transition-colors" aria-label="Get help">{{ t('navigation.help') }}</RouterLink>
+        <RouterLink to="/experimental" class="text-gray-800 no-underline px-2 py-2 font-medium hover:bg-gray-100 rounded-md transition-colors" aria-label="Experimental features">{{ t('navigation.experimental') }}</RouterLink>
+        <RouterLink to="/login" aria-label="Log in to your account">
           <BaseButton
             title="Log in"
             variant="secondary"

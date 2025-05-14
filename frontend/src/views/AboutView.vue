@@ -7,7 +7,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+  <div class=" bg-gradient-to-b from-gray-50  to-white">
     <main class="py-16 lg:py-24">
       <!-- Hero Section -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,33 +34,32 @@ const { t } = useI18n()
             <div class="p-6 md:p-8">
               <div class="flex items-center justify-center mb-4">
                 <h2 class="text-2xl md:text-3xl font-pramukh text-gray-900 ">Jonathan Ahlström</h2>
-                
               </div>
-              <div class="flex flex-wrap gap-3 mt-6">
+              <div class="flex flex-col space-y-2.5 mt-6">
                 <a 
                   href="https://www.linkedin.com/in/jonathanahlstrom/" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors duration-200"
                 >
                   <Linkedin class="w-4 h-4 mr-2" />
-                  <span class="font-medium">{{ t('about.links.linkedin') }}</span>
+                  <span class="font-medium text-sm">{{ t('about.links.linkedin') }}</span>
                 </a>
                 <a 
                   href="https://github.com/jonahlstrom" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors duration-200"
                 >
                   <Github class="w-4 h-4 mr-2" />
-                  <span class="font-medium">{{ t('about.links.github') }}</span>
+                  <span class="font-medium text-sm">{{ t('about.links.github') }}</span>
                 </a>
                 <a 
                   href="mailto:jonathan@example.com" 
-                  class="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors duration-200"
                 >
                   <Mail class="w-4 h-4 mr-2" />
-                  <span class="font-medium">Contact</span>
+                  <span class="font-medium text-sm">Contact</span>
                 </a>
               </div>
             </div>
@@ -78,33 +77,32 @@ const { t } = useI18n()
             <div class="p-6 md:p-8">
               <div class="flex items-center justify-center mb-4">
                 <h2 class="text-2xl md:text-3xl font-pramukh text-gray-900 ">Fredrik Wastring</h2>
-                
               </div>
-              <div class="flex flex-wrap gap-3 mt-6">
+              <div class="flex flex-col space-y-2.5 mt-6">
                 <a 
                   href="[Friend_LinkedIn]" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors duration-200"
                 >
                   <Linkedin class="w-4 h-4 mr-2" />
-                  <span class="font-medium">{{ t('about.links.linkedin') }}</span>
+                  <span class="font-medium text-sm">{{ t('about.links.linkedin') }}</span>
                 </a>
                 <a 
                   href="[Friend_GitHub]" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors duration-200"
                 >
                   <Github class="w-4 h-4 mr-2" />
-                  <span class="font-medium">{{ t('about.links.github') }}</span>
+                  <span class="font-medium text-sm">{{ t('about.links.github') }}</span>
                 </a>
                 <a 
                   href="mailto:fredrik@example.com" 
-                  class="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors duration-200"
                 >
                   <Mail class="w-4 h-4 mr-2" />
-                  <span class="font-medium">Contact</span>
+                  <span class="font-medium text-sm">Contact</span>
                 </a>
               </div>
             </div>

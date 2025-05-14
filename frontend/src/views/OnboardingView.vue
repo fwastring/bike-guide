@@ -37,7 +37,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="relative min-h-screen py-20 md:py-32 bg-gradient-to-b from-blue-50 to-indigo-50 overflow-hidden">
+  <section class="relative py-20 md:py-32 bg-gradient-to-b from-blue-50 to-indigo-50 overflow-hidden">
     <!-- Animated background pattern -->
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 opacity-10">
@@ -143,7 +143,7 @@ onUnmounted(() => {
             {{ t('onboarding.steps.go.title') }}
           </h3>
           
-          <p class="font-poppins text-gray-600">
+          <p class="font-poppins tracking-tight font-medium sm:text-lg text-gray-600">
             {{ t('onboarding.steps.go.description') }}
           </p>
         </div>

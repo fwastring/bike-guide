@@ -72,9 +72,10 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
           :mobile="isMobile"
           :errorBorder="!!errorMessage"
           class="w-full"
+          @keyup.enter="handleSearch"
         />
         <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
-          <LocationButton @location="handleLocation" class="!bg-transparent !shadow-none !p-0 !w-7 !h-7" />
+          <LocationButton @location="handleLocation" class="!bg-transparent !shadow-none !p-0 !w-7 !h-7" type="button" />
         </div>
       </div>
       <template v-if="isMobile">

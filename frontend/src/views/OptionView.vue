@@ -1,12 +1,7 @@
 <template>
   <div class="h-screen flex flex-col">
     <main class="flex-1 overflow-y-auto bg-gray-50">
-        <!-- Mini Search Card at the top -->
-      <div class="w-full bg-white py-4 shadow-sm">
-        <div class="max-w-lg mx-auto">
-          <MiniSearchCard @search="handleSearch" :mobile="true" />
-        </div>
-      </div>
+       
       
       <div class="max-w-3xl px-4 sm:px-22 py-8 space-y-8">
         <!-- Search Summary -->
@@ -63,8 +58,5 @@ const handleExpand = (index: number) => {
   router.push(`/route/${index}`)
 }
 
-const handleSearch = async (searchData: { address: string; difficulty: string; distance: string }) => {
-  searchStore.setSearchParams(searchData)
-  await searchStore.fetchRouteOptions()
-}
+
 </script>

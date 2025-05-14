@@ -10,7 +10,6 @@ const emit = defineEmits(['search'])
 const address = ref('')
 const difficulty = 'Medium'
 const distance = '20-30 km'
-const errorMessage = ref('')
 const isMobile = ref(window.innerWidth < 640)
 
 // Responsive: isMobile is true if window width < 640px (sm)
@@ -21,11 +20,10 @@ onUnmounted(() => window.removeEventListener('resize', updateWidth))
 
 const handleSearch = () => {
   if (!address.value.trim()) {
-    errorMessage.value = 'Please enter a location to search for routes.'
     return
   }
-  errorMessage.value = ''
   emit('search', { address: address.value, difficulty, distance })
+  address.value = '' // Clear the input field after successful search
 }
 
 const handleLocation = async (location: { lat: number; lng: number }) => {
@@ -45,13 +43,9 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
     
     if (data.display_name) {
       address.value = data.display_name
-      errorMessage.value = ''
-    } else {
-      throw new Error('Could not get address from coordinates')
     }
   } catch (error) {
     console.error('Error getting location:', error)
-    errorMessage.value = 'Could not get your location. Please enter an address manually.'
   }
 }
 </script>
@@ -64,32 +58,19 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
           v-model="address"
           placeholder="Vägvägen 7"
           :mobile="isMobile"
-          :errorBorder="!!errorMessage"
           :compact="true"
           class="w-full"
+          @keyup.enter="handleSearch"
         />
         <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
-          <LocationButton @location="handleLocation" class="!bg-transparent !shadow-none !p-0 !w-5 !h-5" />
+          <LocationButton 
+            @location="handleLocation" 
+            class="!bg-transparent !shadow-none !p-0 !w-5 !h-5"
+            type="button"
+          />
         </div>
       </div>
-      <BaseButton
-        title="Search"
-        variant="secondary"
-        class="h-10 px-6 text-sm rounded-full whitespace-nowrap w-full sm:w-auto"
-        type="submit"
-      />
+      
     </form>
-    <transition
-      enter-active-class="transition-opacity duration-500"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-active-class="transition-opacity duration-300"
-      leave-from-class="opacity-100"
-      leave-to-class="opacity-0"
-    >
-      <div v-if="errorMessage" class="absolute left-1/2 -translate-x-1/2 mt-2 w-full flex justify-center pointer-events-none z-20">
-        <span class="text-blue-500 text-sm font-semibold bg-opacity-80 px-3 py-1">{{ errorMessage }}</span>
-      </div>
-    </transition>
   </div>
 </template> 

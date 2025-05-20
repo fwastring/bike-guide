@@ -23,8 +23,8 @@ const { t } = useI18n()
         <!-- Team Section -->
         <div class="grid grid-cols-1 gap-8 max-w-4xl mx-auto" role="list" aria-label="Team members">
           <!-- Team Member: Jonathan -->
-          <div class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB]  flex flex-col md:flex-row" role="listitem">
-            <div class="md:w-1/4 flex items-center justify-center">
+          <div class="border-[0.5px] border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB]  flex flex-col md:flex-row" role="listitem">
+            <div class="md:w-1/4 pt-4 md:pt-0 flex items-center justify-center">
               <img 
                 src="@/assets/jonathan.jpeg" 
                 alt="Jonathan Ahlström" 
@@ -32,47 +32,48 @@ const { t } = useI18n()
               />
             </div>
             <div class="p-6 md:p-8 md:w-2/3">
-              <h2 class="font-poppins text-xl font-bold text-gray-900 mb-4">Jonathan Ahlström</h2>
-              <p class="text-gray-600 mb-6">Cycling enthusiast & tech lover. Building the future of bike navigation.</p>
-              <div class="flex flex-wrap gap-2 justify-center md:justify-start" role="list" aria-label="Jonathan's social links">
+              <h2 class="font-poppins text-xl font-bold text-gray-900 mb-4 text-center md:text-left">{{ t('about.team.jonathan.name') }}</h2>
+              <div class="w-full h-[0.5px] bg-gray-200 mx-auto md:mx-0 mb-6"></div>
+              <p class="text-gray-600 mb-6 text-center md:text-left">{{ t('about.team.jonathan.description') }}</p>
+              <div class="flex flex-col sm:flex-row gap-2 justify-center md:justify-start items-center sm:items-start" role="list" aria-label="Jonathan's social links">
                 <a 
-                  href="https://www.linkedin.com/in/jonathanahlstrom/" 
+                  href="https://www.linkedin.com/in/jonathan-ahlström-8700a71a1" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center justify-center w-full sm:w-32 px-6 py-2 rounded-full bg-blue-50 text-purple-500 hover:bg-blue-100 transition-colors duration-200"
                   role="listitem"
                   aria-label="Visit Jonathan's LinkedIn profile"
                 >
                   <Linkedin class="w-4 h-4 mr-1.5" aria-hidden="true" />
-                  <span class="text-sm">LinkedIn</span>
+                  <span class="text-sm">{{ t('about.links.linkedin') }}</span>
                 </a>
                 <a 
-                  href="https://github.com/jonahlstrom" 
+                  href="https://github.com/joah-s" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center justify-center w-full sm:w-32 px-6 py-2 rounded-full bg-blue-50 text-purple-500 hover:bg-blue-100 transition-colors duration-200"
                   role="listitem"
                   aria-label="Visit Jonathan's GitHub profile"
                 >
                   <Github class="w-4 h-4 mr-1.5" aria-hidden="true" />
-                  <span class="text-sm">GitHub</span>
+                  <span class="text-sm">{{ t('about.links.github') }}</span>
                 </a>
                 <a 
-                  href="mailto:jonathan@example.com" 
-                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  href="mailto:jonathan.ahlstrom@outlook.com" 
+                  class="inline-flex items-center justify-center w-full sm:w-32 px-6 py-2 rounded-full bg-blue-50 text-purple-500 hover:bg-blue-100 transition-colors duration-200"
                   role="listitem"
                   aria-label="Contact Jonathan via email"
                 >
                   <Mail class="w-4 h-4 mr-1.5" aria-hidden="true" />
-                  <span class="text-sm">Email</span>
+                  <span class="text-sm">{{ t('about.links.email') }}</span>
                 </a>
               </div>
             </div>
           </div>
 
           <!-- Team Member: Fredrik -->
-          <div class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB]  flex flex-col md:flex-row" role="listitem">
-            <div class="md:w-1/4 flex items-center justify-center">
+          <div class="border-[0.5px] border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB]  flex flex-col md:flex-row" role="listitem">
+            <div class="md:w-1/4 flex items-center pt-4 md:pt-0 justify-center">
               <img 
                 src="@/assets/fredrik.jpeg" 
                 alt="Fredrik Wastring" 
@@ -80,39 +81,40 @@ const { t } = useI18n()
               />
             </div>
             <div class="p-6 md:p-8 md:w-2/3">
-              <h2 class="font-poppins text-xl font-bold text-gray-900 mb-4">Fredrik Wastring</h2>
-              <p class="text-gray-600 mb-6">Adventure seeker & code wizard. Making bike routes awesome.</p>
-              <div class="flex flex-wrap gap-2 justify-center md:justify-start" role="list" aria-label="Fredrik's social links">
+              <h2 class="font-poppins text-xl font-bold text-gray-900 mb-4 text-center md:text-left">{{ t('about.team.fredrik.name') }}</h2>
+              <div class="w-full h-[0.5px] bg-gray-200 mx-auto md:mx-0 mb-6"></div>
+              <p class="text-gray-600 mb-6 text-center md:text-left">{{ t('about.team.fredrik.description') }}</p>
+              <div class="flex flex-col sm:flex-row gap-2 justify-center md:justify-start items-center sm:items-start" role="list" aria-label="Fredrik's social links">
                 <a 
-                  href="[Friend_LinkedIn]" 
+                  href="https://www.linkedin.com/in/fredrik-wastring-95357b195/" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center justify-center w-full sm:w-32 px-6 py-2 rounded-full bg-blue-50 text-purple-500 hover:bg-blue-100 transition-colors duration-200"
                   role="listitem"
                   aria-label="Visit Fredrik's LinkedIn profile"
                 >
                   <Linkedin class="w-4 h-4 mr-1.5" aria-hidden="true" />
-                  <span class="text-sm">LinkedIn</span>
+                  <span class="text-sm">{{ t('about.links.linkedin') }}</span>
                 </a>
                 <a 
-                  href="[Friend_GitHub]" 
+                  href="https://github.com/fwastring" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center justify-center w-full sm:w-32 px-6 py-2 rounded-full bg-blue-50 text-purple-500 hover:bg-blue-100 transition-colors duration-200"
                   role="listitem"
                   aria-label="Visit Fredrik's GitHub profile"
                 >
                   <Github class="w-4 h-4 mr-1.5" aria-hidden="true" />
-                  <span class="text-sm">GitHub</span>
+                  <span class="text-sm">{{ t('about.links.github') }}</span>
                 </a>
                 <a 
-                  href="mailto:fredrik@example.com" 
-                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  href="mailto:fredrik@wastring.com" 
+                  class="inline-flex items-center justify-center w-full sm:w-32 px-6 py-2 rounded-full bg-blue-50 text-purple-500 hover:bg-blue-100 transition-colors duration-200"
                   role="listitem"
                   aria-label="Contact Fredrik via email"
                 >
                   <Mail class="w-4 h-4 mr-1.5" aria-hidden="true" />
-                  <span class="text-sm">Email</span>
+                  <span class="text-sm">{{ t('about.links.email') }}</span>
                 </a>
               </div>
             </div>

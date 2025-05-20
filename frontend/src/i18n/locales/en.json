@@ -50,7 +50,18 @@
     "description": "",
     "links": {
       "linkedin": "LinkedIn",
-      "github": "GitHub"
+      "github": "GitHub",
+      "email": "Email"
+    },
+    "team": {
+      "jonathan": {
+        "name": "Jonathan Ahlström",
+        "description": "Frontend developer, UX-designer & cycling everyday"
+      },
+      "fredrik": {
+        "name": "Fredrik Wastring",
+        "description": "Backend developer & code wizard. Making bike routes awesome."
+      }
     }
   },
   "language": {

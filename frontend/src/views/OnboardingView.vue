@@ -73,7 +73,7 @@ onUnmounted(() => {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 max-w-6xl mx-auto">
         <!-- Step 1 -->
         <div 
-          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          class="border-[0.5px] border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
           :class="{ 'animate-fadeIn': isVisible[0] }"
         >
           <div class="mb-8 relative">
@@ -98,7 +98,7 @@ onUnmounted(() => {
         
         <!-- Step 2 -->
         <div 
-          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          class="border-[0.5px] border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
           :class="{ 'animate-fadeIn animation-delay-300': isVisible[1] }"
         >
           <div class="mb-8 relative">
@@ -123,7 +123,7 @@ onUnmounted(() => {
         
         <!-- Step 3 -->
         <div 
-          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          class="border-[0.5px] border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
           :class="{ 'animate-fadeIn animation-delay-600': isVisible[2] }"
         >
           <div class="mb-8 relative">

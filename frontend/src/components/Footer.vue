@@ -3,33 +3,19 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <footer class="bg-gray-800 text-white py-8 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="space-y-2">
+  <footer class="bg-gray-800 text-white py-16 mt-auto">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-col items-center space-y-4">
         <h3 class="text-xl font-semibold">Bike Guide</h3>
-        <p class="text-gray-300">Your ultimate cycling companion</p>
+        <nav class="flex gap-6">
+          <RouterLink to="/" class="text-gray-300 hover:text-white transition-colors">Search</RouterLink>
+          <RouterLink to="/help" class="text-gray-300 hover:text-white transition-colors">Help</RouterLink>
+        </nav>
+        <p class="text-gray-400">&copy; {{ new Date().getFullYear() }} Bike Guide</p>
       </div>
-      <div class="space-y-2">
-        <h4 class="text-lg font-medium">Quick Links</h4>
-        <RouterLink to="/" class="block text-gray-300 hover:text-white transition-colors">Home</RouterLink>
-        <RouterLink to="/search" class="block text-gray-300 hover:text-white transition-colors">Search</RouterLink>
-        <RouterLink to="/options" class="block text-gray-300 hover:text-white transition-colors">Options</RouterLink>
-        <RouterLink to="/onboarding" class="block text-gray-300 hover:text-white transition-colors">Onboarding</RouterLink>
-        <RouterLink to="/about" class="block text-gray-300 hover:text-white transition-colors">About</RouterLink>
-        <RouterLink to="/help" class="block text-gray-300 hover:text-white transition-colors">Help</RouterLink>
-        <RouterLink to="/experimental" class="block text-gray-300 hover:text-white transition-colors">Experimental</RouterLink>
+      <div class="text-center mt-8 pt-8 border-t border-gray-700">
+
       </div>
-      <div class="space-y-2">
-        <h4 class="text-lg font-medium">Account</h4>
-        <RouterLink to="/login" class="block text-gray-300 hover:text-white transition-colors">Login</RouterLink>
-        <RouterLink to="/signup" class="block text-gray-300 hover:text-white transition-colors">Sign Up</RouterLink>
-        <h4 class="text-lg font-medium mt-4">Legal</h4>
-        <RouterLink to="/privacy" class="block text-gray-300 hover:text-white transition-colors">Privacy Policy</RouterLink>
-        <RouterLink to="/terms" class="block text-gray-300 hover:text-white transition-colors">Terms of Service</RouterLink>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 pt-8 mt-8 border-t border-gray-700 text-center">
-      <p>&copy; {{ new Date().getFullYear() }} Bike Guide. All rights reserved.</p>
     </div>
   </footer>
 </template> 

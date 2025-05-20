@@ -21,100 +21,98 @@ const { t } = useI18n()
         </div>
 
         <!-- Team Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-2xl mx-auto" role="list" aria-label="Team members">
+        <div class="grid grid-cols-1 gap-8 max-w-4xl mx-auto" role="list" aria-label="Team members">
           <!-- Team Member: Jonathan -->
-          <div class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02]" role="listitem">
-            <div class="aspect-w-16 aspect-h-9 bg-blue-50">
+          <div class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB]  flex flex-col md:flex-row" role="listitem">
+            <div class="md:w-1/4 flex items-center justify-center">
               <img 
                 src="@/assets/jonathan.jpeg" 
-                alt="Jonathan Ahlström, co-founder of Bike Guide" 
-                class="w-full h-full object-cover" 
+                alt="Jonathan Ahlström" 
+                class="w-32 h-32 object-cover rounded-full p-2" 
               />
             </div>
-            <div class="p-6 md:p-8">
-              <div class="flex items-center justify-center mb-4">
-                <h2 class="font-poppins text-xl sm:text-2xl font-bold text-gray-900 mb-4">Jonathan Ahlström</h2>
-              </div>
-              <div class="flex flex-col space-y-2.5 mt-6" role="list" aria-label="Jonathan's social links">
+            <div class="p-6 md:p-8 md:w-2/3">
+              <h2 class="font-poppins text-xl font-bold text-gray-900 mb-4">Jonathan Ahlström</h2>
+              <p class="text-gray-600 mb-6">Cycling enthusiast & tech lover. Building the future of bike navigation.</p>
+              <div class="flex flex-wrap gap-2 justify-center md:justify-start" role="list" aria-label="Jonathan's social links">
                 <a 
                   href="https://www.linkedin.com/in/jonathanahlstrom/" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
                   role="listitem"
                   aria-label="Visit Jonathan's LinkedIn profile"
                 >
-                  <Linkedin class="w-4 h-4 mr-2" aria-hidden="true" />
-                  <span class="font-medium text-sm">{{ t('about.links.linkedin') }}</span>
+                  <Linkedin class="w-4 h-4 mr-1.5" aria-hidden="true" />
+                  <span class="text-sm">LinkedIn</span>
                 </a>
                 <a 
                   href="https://github.com/jonahlstrom" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
                   role="listitem"
                   aria-label="Visit Jonathan's GitHub profile"
                 >
-                  <Github class="w-4 h-4 mr-2" aria-hidden="true" />
-                  <span class="font-medium text-sm">{{ t('about.links.github') }}</span>
+                  <Github class="w-4 h-4 mr-1.5" aria-hidden="true" />
+                  <span class="text-sm">GitHub</span>
                 </a>
                 <a 
                   href="mailto:jonathan@example.com" 
-                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
                   role="listitem"
                   aria-label="Contact Jonathan via email"
                 >
-                  <Mail class="w-4 h-4 mr-2" aria-hidden="true" />
-                  <span class="font-medium text-sm">Contact</span>
+                  <Mail class="w-4 h-4 mr-1.5" aria-hidden="true" />
+                  <span class="text-sm">Email</span>
                 </a>
               </div>
             </div>
           </div>
 
           <!-- Team Member: Fredrik -->
-          <div class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02]" role="listitem">
-            <div class="aspect-w-16 aspect-h-9 bg-blue-50">
+          <div class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB]  flex flex-col md:flex-row" role="listitem">
+            <div class="md:w-1/4 flex items-center justify-center">
               <img 
                 src="@/assets/fredrik.jpeg" 
-                alt="Fredrik Wastring, co-founder of Bike Guide" 
-                class="w-full h-full object-cover" 
+                alt="Fredrik Wastring" 
+                class="w-32 h-32 object-cover rounded-full p-2" 
               />
             </div>
-            <div class="p-6 md:p-8">
-              <div class="flex items-center justify-center mb-4">
-                <h2 class="font-poppins text-xl sm:text-2xl font-bold text-gray-900 mb-4">Fredrik Wastring</h2>
-              </div>
-              <div class="flex flex-col space-y-2.5 mt-6" role="list" aria-label="Fredrik's social links">
+            <div class="p-6 md:p-8 md:w-2/3">
+              <h2 class="font-poppins text-xl font-bold text-gray-900 mb-4">Fredrik Wastring</h2>
+              <p class="text-gray-600 mb-6">Adventure seeker & code wizard. Making bike routes awesome.</p>
+              <div class="flex flex-wrap gap-2 justify-center md:justify-start" role="list" aria-label="Fredrik's social links">
                 <a 
                   href="[Friend_LinkedIn]" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
                   role="listitem"
                   aria-label="Visit Fredrik's LinkedIn profile"
                 >
-                  <Linkedin class="w-4 h-4 mr-2" aria-hidden="true" />
-                  <span class="font-medium text-sm">{{ t('about.links.linkedin') }}</span>
+                  <Linkedin class="w-4 h-4 mr-1.5" aria-hidden="true" />
+                  <span class="text-sm">LinkedIn</span>
                 </a>
                 <a 
                   href="[Friend_GitHub]" 
                   target="_blank" 
                   rel="noopener" 
-                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
                   role="listitem"
                   aria-label="Visit Fredrik's GitHub profile"
                 >
-                  <Github class="w-4 h-4 mr-2" aria-hidden="true" />
-                  <span class="font-medium text-sm">{{ t('about.links.github') }}</span>
+                  <Github class="w-4 h-4 mr-1.5" aria-hidden="true" />
+                  <span class="text-sm">GitHub</span>
                 </a>
                 <a 
                   href="mailto:fredrik@example.com" 
-                  class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
+                  class="inline-flex items-center px-3 py-1.5 rounded-md bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] text-white hover:from-[#7D6CAE] hover:to-[#9692D2] transition-colors duration-200"
                   role="listitem"
                   aria-label="Contact Fredrik via email"
                 >
-                  <Mail class="w-4 h-4 mr-2" aria-hidden="true" />
-                  <span class="font-medium text-sm">Contact</span>
+                  <Mail class="w-4 h-4 mr-1.5" aria-hidden="true" />
+                  <span class="text-sm">Email</span>
                 </a>
               </div>
             </div>

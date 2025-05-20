@@ -89,7 +89,7 @@ const handleSearch = async (searchData: { address: string; difficulty: string; d
       
       <!-- Right: Navigation Links and Log In -->
       <div class="hidden md:flex items-center gap-6" role="navigation" aria-label="User navigation">
-        <RouterLink to="/about" class="text-gray-800 no-underline px-2 py-1 font-medium hover:opacity-80 transition-opacity" aria-label="About Bike Guide">{{ t('navigation.about') }}</RouterLink>
+        
         <RouterLink to="/help" class="text-gray-800 no-underline px-2 py-1 font-medium hover:opacity-80 transition-opacity" aria-label="Get help">{{ t('navigation.help') }}</RouterLink>
         <RouterLink to="/login" aria-label="Log in to your account">
           <BaseButton

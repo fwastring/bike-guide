@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import BaseButton from '../components/BaseButton.vue'
 import { useRouter } from 'vue-router'
-import Header from '../components/Header.vue'
 import { MapPin, Map, Bike, ArrowRight } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 

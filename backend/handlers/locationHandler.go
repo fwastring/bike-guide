@@ -144,7 +144,8 @@ func getBikeRoute(points []Point) (*OSRMResponse, error) {
 	}
 
 	// Use a public OSRM instance. For production, you should run your own.
-	osrmBaseURL := "http://localhost:5000/route/v1/bike"
+	// osrmBaseURL := "http://localhost:5000/route/v1/bike"
+	osrmBaseURL := "http://osrm-backend-helm-osrm-backend:5000/route/v1/bike"
 
 	// Construct the coordinates string
 	var coords []string

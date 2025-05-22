@@ -21,7 +21,7 @@
 <script setup lang="ts">
   import { ref, onMounted, computed, watch } from 'vue'
 import { LMap, LTileLayer, LControlZoom, LPolyline, LMarker } from '@vue-leaflet/vue-leaflet'
-import { type Poi, type RouteResponse } from '@/App.vue' // This now uses the GeoJSON types
+import { type Poi, type RouteResponse } from '@/components/ResultCard.vue' // This now uses the GeoJSON types
 import * as L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import type { Position } from 'geojson'; // For clarity on coordinate types

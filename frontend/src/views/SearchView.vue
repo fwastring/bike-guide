@@ -17,13 +17,13 @@ const handleSearch = (searchData: { address: string; difficulty: string; distanc
 
 <template>
   <div class="min-h-screen flex max-w-7xl mx-auto p-6 md:space-x-6">
-    
+
     <!-- Search Panel -->
-    
+
 
     <!-- Map Panel -->
     <div class="w-2/3 hidden md:block">
-      <MapCard />
+      <!-- <MapCard /> -->
     </div>
   </div>
-</template> 
+</template>

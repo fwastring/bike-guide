@@ -7,72 +7,13 @@ import { getPOIs, getRoutes } from './services/routeService' // Assuming getRout
 import { useAuthStore } from './stores/auth'
 import { useRouter } from 'vue-router'
 // Import GeoJSON types
-import type { Feature, LineString, GeoJsonProperties, Position } from 'geojson';
-
-export type RouteResponse = {
-  response: Feature<LineString, GeoJsonProperties>
-};
-
-export type Node = {
-  ID: number
-  Lat: number
-  Lon: number
-}
-
-export type OverpassResponse = {
-  Timestamp: string
-  Nodes: Node[]
-};
-
-export type Poi = {
-  ID: number
-  Lat: number
-  Lon: number
-}
-
 const authStore = useAuthStore()
 const router = useRouter()
-const address = ref("")
-
-// Initialize routesRef with the correct type and an empty array for routes
-// or a default Feature structure if absolutely needed.
-// const routesRef = ref<RouteResponse>({ routes: [] });
-
-const poiRef = ref<Poi[]>(
-  [{
-    ID: 1231,
-    Lon: 123123,
-    Lat: 12312231
-  }]
-)
-const routesRef = ref<RouteResponse>({
-  response: {
-    type: "Feature",
-    geometry: {
-      type: "LineString",
-      coordinates: [] as Position[] // Explicitly type empty coordinates array
-    },
-    properties: {}
-  }
-});
 
 
 onMounted(async () => {
   await authStore.checkAuth()
 })
-
-async function findRoutes() {
-  // The getRoutes service should be typed to return RouteResponse
-  const newRoutes: RouteResponse = await getRoutes(address.value)
-  const pois: OverpassResponse = await getPOIs(address.value)
-  routesRef.value = newRoutes
-  console.log(newRoutes)
-  let allPois = []
-  for (let [id, node] of Object.entries(pois.Nodes)) {
-    allPois.push(node)
-  }
-  poiRef.value = allPois
-}
 
 const handleLogout = async () => {
   await authStore.logout()

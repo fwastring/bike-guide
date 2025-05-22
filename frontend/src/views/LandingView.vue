@@ -31,7 +31,7 @@ const scrollToSearch = () => {
 
 <template>
   <div class="h-screen flex flex-col">
-    <main class="flex-1 overflow-y-auto">
+    <main class="flex-1 overflow-y-auto scroll-smooth">
       <!-- Hero Section -->
       <section class="relative flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto w-full py-6 sm:py-10">
         <!-- Desktop wind background -->
@@ -42,40 +42,34 @@ const scrollToSearch = () => {
           <!-- Mobile wind background -->
           <WindBackground class="lg:hidden" />
           <div class="flex z-10 items-center">
-            <video
-              src="@/assets/rider1.webm"
-              autoplay
-              loop
-              muted
-              playsinline
-              class="h-20 sm:h-28 lg:h-50 w-auto mr-2 lg:mr-4"
-              style="background:
-              transparent; object-fit: contain; mix-blend-mode: screen;
-              "
-            ></video>
-            <video
-              src="@/assets/rider2.webm"
-              autoplay
-              loop
-              muted
-              playsinline
-              class="h-28 sm:h-32 lg:h-50 w-auto"
-              style="background: transparent; object-fit: contain; mix-blend-mode: screen;"
-            ></video>
+            <img
+              :src="Rider1"
+              class="h-20 sm:h-28 lg:h-50 w-auto mr-2 lg:mr-4 floating-animation"
+              style="object-fit: contain;"
+              alt="Animation of a cyclist riding on a scenic route"
+              role="img"
+            />
+            <img
+              :src="Rider2"
+              class="h-28 sm:h-32 lg:h-50 w-auto floating-animation-delayed"
+              style="object-fit: contain;"
+              alt="Animation of a cyclist navigating through a city route"
+              role="img"
+            />
           </div>
         </div>
         <!-- Text: smaller font, more margin -->
         <div class="relative z-20 max-w-[500px] sm:max-w-[600px] md:max-w-[600px] lg:max-w-3xl py-16 md:py-32 text-left w-full lg:w-3/5 px-4 xl:px-16 order-2 lg:order-1">
-          <h1 class="font-pramukh text-7xl sm:text-8xl lg:text-8xl text-gray-900 mb-2 sm:mb-4">{{ t('landing.hero.title') }}</h1>
-
-          <p class="font-poppins text-lg text-gray-600 mb-6">{{ t('landing.hero.description') }}</p>
+          <h1 class="font-pramukh text-5xl sm:text-8xl lg:text-8xl text-gray-900 mb-2 sm:mb-4">{{ t('landing.hero.title') }}</h1>
+          
+          <p class="font-poppins text-sm sm:text-lg text-gray-600 mb-6">{{ t('landing.hero.description') }}</p>
           <div class="w-full max-w-3xl mx-auto">
             <SearchCard @search="handleSearch" />
           </div>
         </div>
       </section>
       <!-- Onboarding Section -->
-      <section id="onboarding">
+      <section id="onboarding" class="scroll-mt-20">
         <OnboardingView />
       </section>
       <!-- About Section -->
@@ -87,6 +81,38 @@ const scrollToSearch = () => {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Add smooth scrolling to the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(5px, -10px);
+  }
+  50% {
+    transform: translate(10px, 0px);
+  }
+  75% {
+    transform: translate(5px, 10px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+.floating-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-animation-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
 
 @font-face {
   font-family: 'Pramukh Rounded';

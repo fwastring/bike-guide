@@ -1,9 +1,7 @@
 <template>
   <div class="h-screen flex flex-col">
     <main class="flex-1 overflow-y-auto bg-gray-50">
-       
-      
-      <div class="max-w-3xl px-4 sm:px-22 py-8 space-y-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-10 lg:px-14 py-8 space-y-8">
         <!-- Search Summary -->
         <div>
           <SummaryCard 
@@ -41,12 +39,6 @@ const router = useRouter()
 const searchStore = useSearchStore()
 
 onMounted(async () => {
-  // If no search params are set, redirect back to search
-  if (!searchStore.searchParams.address) {
-    router.push('/search')
-    return
-  }
-
   await searchStore.fetchRouteOptions()
 })
 
@@ -57,6 +49,5 @@ const handleEdit = () => {
 const handleExpand = (index: number) => {
   router.push(`/route/${index}`)
 }
-
 
 </script>

@@ -21,10 +21,6 @@ const updateWidth = () => { windowWidth.value = window.innerWidth }
 onMounted(() => window.addEventListener('resize', updateWidth))
 onUnmounted(() => window.removeEventListener('resize', updateWidth))
 
-const scrollToOnboarding = () => {
-  scrollToSection('onboarding')
-}
-
 const handleSearch = () => {
   if (!address.value.trim()) {
     errorMessage.value = 'Please enter a location to search for routes.'
@@ -64,7 +60,7 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
 
 <template>
   <div class="relative w-full">
-    <form @submit.prevent="handleSearch" class="flex flex-col sm:flex-row items-center gap-4 w-full sm:max-w-3xl mx-auto">
+    <form @submit.prevent="handleSearch" class="flex flex-col sm:flex-row items-center gap-4 w-full sm:max-w-3xl mx-auto" role="search" aria-label="Route search">
       <div class="relative flex-1 w-full">
         <InputField
           v-model="address"
@@ -73,9 +69,10 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
           :errorBorder="!!errorMessage"
           class="w-full"
           @keyup.enter="handleSearch"
+          aria-label="Enter location"
         />
         <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
-          <LocationButton @location="handleLocation" class="!bg-transparent !shadow-none !p-0 !w-7 !h-7" type="button" />
+          <LocationButton @location="handleLocation" class="!bg-transparent !shadow-none !p-0 !w-7 !h-7" type="button" aria-label="Use current location" />
         </div>
       </div>
       <template v-if="isMobile">
@@ -85,7 +82,8 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
             variant="secondary"
             class="h-10 px-6 text-base rounded-full whitespace-nowrap w-1/2"
             type="button"
-            @click="scrollToOnboarding"
+            @click="router.push('/help')"
+            aria-label="Get help with route search"
           />
           <BaseButton
             title="Find Route"
@@ -94,6 +92,7 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
             type="submit"
             hover="bg-primary-dark"
             cursor="pointer"
+            aria-label="Search for routes"
           />
         </div>
       </template>
@@ -103,20 +102,17 @@ const handleLocation = async (location: { lat: number; lng: number }) => {
           variant="primary"
           class="h-14 px-10 text-lg rounded-full whitespace-nowrap w-full sm:w-auto"
           type="submit"
+          aria-label="Search for routes"
         />
       </template>
     </form>
-    <transition
-      enter-active-class="transition-opacity duration-500"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-active-class="transition-opacity duration-300"
-      leave-from-class="opacity-100"
-      leave-to-class="opacity-0"
+    <div 
+      v-if="errorMessage" 
+      class="absolute left-1/2 -translate-x-1/2 mt-2 w-full flex justify-center pointer-events-none z-20"
+      role="alert"
+      aria-live="assertive"
     >
-      <div v-if="errorMessage" class="absolute left-1/2 -translate-x-1/2 mt-2 w-full flex justify-center pointer-events-none z-20">
-        <span class="text-blue-500 text-md font-semibold  bg-opacity-80 px-3 py-1 ">{{ errorMessage }}</span>
-      </div>
-    </transition>
+      <span class="text-[#8E7DBE] text-md font-semibold bg-opacity-80 px-3 py-1">{{ errorMessage }}</span>
+    </div>
   </div>
 </template> 

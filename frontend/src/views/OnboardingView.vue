@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import BaseButton from '../components/BaseButton.vue'
 import { useRouter } from 'vue-router'
-import Header from '../components/Header.vue'
 import { MapPin, Map, Bike, ArrowRight } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 
@@ -37,7 +35,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="relative py-20 md:py-32 bg-gradient-to-b from-blue-50 to-indigo-50 overflow-hidden">
+  <section class="relative py-20 bg-gradient-to-b from-[#8E7DBE]/10 to-[#A7A3E2]/10 overflow-hidden">
     <!-- Animated background pattern -->
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 opacity-10">
@@ -50,9 +48,9 @@ onUnmounted(() => {
       </div>
       
       <!-- Abstract shapes -->
-      <div class="absolute top-20 left-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-      <div class="absolute top-40 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div class="absolute bottom-40 left-1/3 w-80 h-80 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      <div class="absolute top-20 left-10 w-64 h-64 bg-[#8E7DBE] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div class="absolute top-40 right-10 w-72 h-72 bg-[#A7A3E2] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-40 left-1/3 w-80 h-80 bg-[#7D6CAE] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
     </div>
     
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-10 lg:px-12">
@@ -60,11 +58,11 @@ onUnmounted(() => {
       <div class="text-center mb-16 md:mb-24">
      
         
-        <h1 class="font-pramukh text-5xl sm:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-700 mb-6 leading-tight max-w-5xl mx-auto">
+        <h1 class="font-pramukh text-5xl sm:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-[#8E7DBE] to-[#A7A3E2] mb-2 leading-tight max-w-5xl mx-auto">
           {{ t('onboarding.title') }}
         </h1>
         
-        <p class="font-poppins text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+        <p class="font-poppins text-sm sm:text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10">
           {{ t('onboarding.subtitle') }}
         </p>
         
@@ -75,32 +73,32 @@ onUnmounted(() => {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 max-w-6xl mx-auto">
         <!-- Step 1 -->
         <div 
-          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          class="border-[0.5px] border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
           :class="{ 'animate-fadeIn': isVisible[0] }"
         >
           <div class="mb-8 relative">
-            <div class="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl transform -rotate-6"></div>
-            <div class="relative w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
-              <MapPin class="w-8 h-8 text-blue-600" />
+            <div class="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-2xl transform -rotate-6"></div>
+            <div class="relative w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center">
+              <MapPin class="w-8 h-8 text-indigo-600" />
             </div>
           </div>
           
-          <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full mb-3">
+          <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full mb-3">
             {{ t('onboarding.steps.find.step', 'Step 1') }}
           </span>
           
-          <h3 class="font-poppins text-2xl font-bold text-gray-900 mb-4">
+          <h3 class="font-poppins text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             {{ t('onboarding.steps.find.title') }}
           </h3>
           
-          <p class="font-poppins text-gray-600">
+          <p class="font-poppins text-gray-600 text-sm sm:text-lg tracking-tight">
             {{ t('onboarding.steps.find.description') }}
           </p>
         </div>
         
         <!-- Step 2 -->
         <div 
-          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          class="border-[0.5px] border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
           :class="{ 'animate-fadeIn animation-delay-300': isVisible[1] }"
         >
           <div class="mb-8 relative">
@@ -114,18 +112,18 @@ onUnmounted(() => {
             {{ t('onboarding.steps.choose.step', 'Step 2') }}
           </span>
           
-          <h3 class="font-poppins text-2xl font-bold text-gray-900 mb-4">
+          <h3 class="font-poppins text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             {{ t('onboarding.steps.choose.title') }}
           </h3>
           
-          <p class="font-poppins text-gray-600">
+          <p class="font-poppins text-gray-600 text-sm sm:text-lg tracking-tight">
             {{ t('onboarding.steps.choose.description') }}
           </p>
         </div>
         
         <!-- Step 3 -->
         <div 
-          class="border border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
+          class="border-[0.5px] border-gray-300 rounded-2xl overflow-hidden transition-all duration-300 bg-[#FBFBFB] hover:scale-[1.02] p-8 sm:p-10 transition-all duration-500 transform hover:-translate-y-2"
           :class="{ 'animate-fadeIn animation-delay-600': isVisible[2] }"
         >
           <div class="mb-8 relative">
@@ -139,11 +137,11 @@ onUnmounted(() => {
             {{ t('onboarding.steps.go.step', 'Step 3') }}
           </span>
           
-          <h3 class="font-poppins text-2xl font-bold text-gray-900 mb-4">
+          <h3 class="font-poppins text-xl sm:text-2xl font-bold text-gray-900 mb-4">
             {{ t('onboarding.steps.go.title') }}
           </h3>
           
-          <p class="font-poppins tracking-tight font-medium sm:text-lg text-gray-600">
+          <p class="font-poppins tracking-tight sm:text-lg text-gray-600 text-sm sm:text-lg">
             {{ t('onboarding.steps.go.description') }}
           </p>
         </div>

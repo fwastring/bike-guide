@@ -33,7 +33,7 @@
     "steps": {
       "find": {
         "title": "Find Route",
-        "description": "Set your parameters for your personalized bike route."
+        "description": "Enter an address from where you want to start biking"
       },
       "choose": {
         "title": "Choose optimal route",
@@ -41,16 +41,27 @@
       },
       "go": {
         "title": "Go biking!",
-        "description": "Save the route to your phone and start biking!"
+        "description": "Save the route and start biking!"
       }
     }
   },
   "about": {
-    "title": "Meet the Developers",
-    "description": "Bike Guide was created by two friends passionate about cycling and technology. The project was built from scratch with a focus on user experience, modern web technologies, and a love for adventure. Every feature, from route search to the animated landing page, was designed and coded collaboratively, with countless hours spent on design, development, and testing to make the perfect cycling companion.",
+    "title": "Let's connect",
+    "description": "",
     "links": {
       "linkedin": "LinkedIn",
-      "github": "GitHub"
+      "github": "GitHub",
+      "email": "Email"
+    },
+    "team": {
+      "jonathan": {
+        "name": "Jonathan Ahlström",
+        "description": "Frontend developer, UX-designer & cycling everyday"
+      },
+      "fredrik": {
+        "name": "Fredrik Wastring",
+        "description": "Backend developer & code wizard. Making bike routes awesome."
+      }
     }
   },
   "language": {

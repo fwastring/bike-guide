@@ -42,11 +42,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useSearchStore } from '@/stores/searchStore'
 import Footer from '../components/Footer.vue'
 import ResultCard from '../components/ResultCard.vue'
+
 
 const router = useRouter()
 const route = useRoute()
@@ -54,4 +55,4 @@ const searchStore = useSearchStore()
 
 const routeId = parseInt(route.params.id as string)
 const currentRoute = computed(() => searchStore.routeOptions[routeId])
-</script> 
+</script>

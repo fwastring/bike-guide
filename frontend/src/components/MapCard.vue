@@ -12,19 +12,71 @@
         :attribution="attribution"
       ></l-tile-layer>
       <l-control-zoom position="topright"></l-control-zoom>
+      <l-polyline v-if="coordsForDisplay && coordsForDisplay.length > 0" color="red" :lat-lngs="coordsForDisplay" :key="polylineKey" />
+        <l-marker v-if="marker" :lat-lng="marker"></l-marker>
     </l-map>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { LMap, LTileLayer, LControlZoom } from '@vue-leaflet/vue-leaflet'
+  import { ref, onMounted, computed, watch } from 'vue'
+import { LMap, LTileLayer, LControlZoom, LPolyline, LMarker } from '@vue-leaflet/vue-leaflet'
+import { type Poi, type RouteResponse } from '@/App.vue' // This now uses the GeoJSON types
 import * as L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import type { Position } from 'geojson'; // For clarity on coordinate types
+import 'leaflet/dist/leaflet.css'
+
+const props = defineProps<{
+  response: RouteResponse,
+  markers: Poi[]
+}>()
+
+const marker = computed(() => {
+  if (
+    props.markers && props.markers.length > 0
+  ) {
+    return props.markers.map(marker => [marker.Lat, marker.Lon] as [number, number])[0]
+
+  }
+})
+
 
 const zoom = ref(13)
 const center = ref<[number, number]>([55.7047, 13.1910])
 const map = ref<L.Map | null>(null)
+const polylineKey = ref(0); // To force re-render of LPolyline if needed
+
+const coordsForDisplay = computed(() => {
+  console.log(props.response)
+  if (
+    props.response &&
+    props.response.response.geometry.coordinates.length > 0
+  ) {
+    const geoJsonCoordinates = props.response.response.geometry.coordinates as Position[];
+
+    // Swap to [lat, lng] for Leaflet
+    const leafletCoordinates = geoJsonCoordinates.map(coord => [coord[1], coord[0]] as [number, number]);
+
+    console.log('Coordinates passed to LPolyline (should be [lat,lng]):', JSON.stringify(leafletCoordinates));
+    return leafletCoordinates;
+
+  }
+  return []
+})
+
+// ... (rest of your MapCard logic, including the watch for 'coords' to call map.fitBounds)
+// Remember that map.fitBounds typically expects [latitude, longitude]
+// so the swapping logic in your watch function remains important:
+watch(coordsForDisplay, (newCoords) => { // newCoords are now already [lat, lng]
+  if (map.value && newCoords && newCoords.length > 0) {
+    // No need to swap again here, as coordsForDisplay already provides [lat, lng]
+    map.value.fitBounds(newCoords as L.LatLngBoundsExpression);
+    polylineKey.value++;
+  }
+}, { deep: true })
+
+
 
 const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 const mapOptions = {
@@ -51,6 +103,7 @@ const onMapReady = (mapInstance: L.Map) => {
   map.value = mapInstance
   L.Marker.prototype.options.icon = customIcon
 }
+
 
 onMounted(() => {
   if (map.value) {
@@ -91,4 +144,4 @@ onMounted(() => {
 .leaflet-control-container {
   z-index: 1;
 }
-</style> 
+</style>

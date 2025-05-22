@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import { computed, ref, onMounted } from 'vue'
 import BaseButton from './BaseButton.vue'
+import MapCard from '@/components/MapCard.vue'
+import type { Feature, LineString, GeoJsonProperties, Position } from 'geojson';
+import { getPOIs, getRoutes } from '@/services/routeService';
+import { useSearchStore } from '@/stores/searchStore';
+import { useRoute, useRouter } from 'vue-router';
+export type RouteResponse = {
+  response: Feature<LineString, GeoJsonProperties>
+};
 
 interface Props {
   title: string
@@ -18,7 +27,70 @@ interface Props {
   gpxUrl: string
 }
 
+export type Node = {
+  ID: number
+  Lat: number
+  Lon: number
+}
+
+export type OverpassResponse = {
+  Timestamp: string
+  Nodes: Node[]
+};
+
+export type Poi = {
+  ID: number
+  Lat: number
+  Lon: number
+}
+
+// Initialize routesRef with the correct type and an empty array for routes
+// or a default Feature structure if absolutely needed.
+// const routesRef = ref<RouteResponse>({ routes: [] });
+
+const poiRef = ref<Poi[]>(
+  [{
+    ID: 1231,
+    Lon: 123123,
+    Lat: 12312231
+  }]
+)
+const routesRef = ref<RouteResponse>({
+  response: {
+    type: "Feature",
+    geometry: {
+      type: "LineString",
+      coordinates: [] as Position[] // Explicitly type empty coordinates array
+    },
+    properties: {}
+  }
+});
+
+const router = useRouter()
+const route = useRoute()
+const searchStore = useSearchStore()
+
+const routeId = parseInt(route.params.id as string)
+const currentRoute = computed(() => searchStore.routeOptions[routeId])
+
+async function findRoutes() {
+  // The getRoutes service should be typed to return RouteResponse
+  const newRoutes: RouteResponse = await getRoutes(currentRoute.value.address, currentRoute.value.distance)
+  const pois: OverpassResponse = await getPOIs(currentRoute.value.address)
+  routesRef.value = newRoutes
+  console.log(newRoutes)
+  let allPois = []
+  for (let [id, node] of Object.entries(pois.Nodes)) {
+    allPois.push(node)
+  }
+  poiRef.value = allPois
+}
+
 defineProps<Props>()
+
+onMounted(async () => {
+  await findRoutes()
+})
 </script>
 
 <template>
@@ -58,7 +130,7 @@ defineProps<Props>()
     </div>
 
     <div class="mb-4">
-      <img :src="mapImageUrl" alt="Map segment" class="rounded-xl w-full border border-gray-200" />
+        <MapCard :response="routesRef" :markers="poiRef"/>
     </div>
     <div class="mb-2">
       <img :src="elevationChartUrl" alt="Elevation chart" class="w-full h-24 object-contain" />
@@ -83,4 +155,4 @@ defineProps<Props>()
       />
     </div>
   </div>
-</template> 
+</template>

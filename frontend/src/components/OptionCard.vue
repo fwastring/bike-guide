@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Expand } from 'lucide-vue-next'
+import { Expand, CheckIcon } from 'lucide-vue-next'
 import IconButton from './IconButton.vue'
 
 interface Props {
@@ -32,13 +32,13 @@ const getDifficultyColor = (difficulty: string) => {
   <div class="p-4 sm:p-6 rounded-3xl w-full">
     <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
       <!-- Image -->
-      <div class="w-full aspect-[4/3] sm:w-32 sm:h-32 h-auto rounded-2xl bg-gray-200 overflow-hidden flex-shrink-0">
-        <img 
-          :src="imageUrl" 
-          :alt="title"
-          class="w-full h-full object-cover"
-        />
-      </div>
+      <!-- <div class="w-full aspect-[4/3] sm:w-32 sm:h-32 h-auto rounded-2xl bg-gray-200 overflow-hidden flex-shrink-0"> -->
+      <!--   <img  -->
+      <!--     :src="imageUrl"  -->
+      <!--     :alt="title" -->
+      <!--     class="w-full h-full object-cover" -->
+      <!--   /> -->
+      <!-- </div> -->
 
       <!-- Content -->
       <div class="flex-1 flex flex-col justify-between">
@@ -65,15 +65,15 @@ const getDifficultyColor = (difficulty: string) => {
             </div>
           </div>
           <!-- Expand Button -->
-          <button 
+          <button
             @click="emit('expand')"
             class="inline-flex border border-gray-300 rounded-full px-4 py-2 items-center gap-2 text-[#8E7DBE] hover:text-[#7D6CAE] transition-colors w-full sm:w-auto justify-center sm:ml-auto mt-2 sm:mt-4"
           >
-            <span class="text-sm font-medium">Expand</span>
-            <Expand class="w-4 h-4" />
+            <span class="text-sm font-medium">Choose</span>
+            <CheckIcon class="w-4 h-4" />
           </button>
         </div>
       </div>
     </div>
   </div>
-</template> 
+</template>

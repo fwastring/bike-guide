@@ -44,6 +44,15 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+  osrm-backend:
+    image: ghcr.io/project-osrm/osrm-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/data
+    command: osrm-routed --algorithm mld /data/sweden-latest.osrm
+    stdin_open: true
+    tty: true
 
 volumes:
   pg_data:

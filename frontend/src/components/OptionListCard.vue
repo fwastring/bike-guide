@@ -3,6 +3,7 @@ import OptionCard from './OptionCard.vue'
 
 interface RouteOption {
   title: string
+  address: string
   description: string
   distance: string
   duration: string
@@ -25,8 +26,8 @@ const handleExpand = (index: number) => {
 <template>
   <div class="bg-[#FBFBFB] border border-gray-300 border-[0.5px] rounded-3xl w-full max-w-2xl">
     <div class="divide-y divide-gray-200">
-      <div 
-        v-for="(option, index) in options" 
+      <div
+        v-for="(option, index) in options"
         :key="index"
         class="first:rounded-t-3xl last:rounded-b-3xl overflow-hidden"
       >
@@ -43,4 +44,4 @@ const handleExpand = (index: number) => {
       </div>
     </div>
   </div>
-</template> 
+</template>

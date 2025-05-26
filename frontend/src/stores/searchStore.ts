@@ -34,29 +34,29 @@ export const useSearchStore = defineStore('search', () => {
 
       routeOptions.value = [
         {
-          title: 'Scenic Mountain Trail',
+          title: 'First Option',
           address: searchParams.value.address,
           description: 'A beautiful mountain trail with breathtaking views',
-          distance: '10',
-          duration: '2h',
+          distance: '10 km',
+          duration: '30 min',
           difficulty: 'Easy' as const,
           imageUrl: '/images/mountain-trail.jpg'
         },
         {
-          title: 'Forest Adventure',
+          title: 'Second Option',
           address: searchParams.value.address,
           description: 'Explore the dense forest and its wildlife',
           distance: '15',
-          duration: '3h',
+          duration: '45 min',
           difficulty: 'Medium' as const,
           imageUrl: '/images/forest-adventure.jpg'
         },
         {
-          title: 'Coastal Route',
+          title: 'Third Option',
           address: searchParams.value.address,
           description: 'Ride along the stunning coastline',
           distance: '20',
-          duration: '4h',
+          duration: '1 h 5 min',
           difficulty: 'Hard' as const,
           imageUrl: '/images/coastal-route.jpg'
         }

@@ -9,7 +9,7 @@ const router = useRouter()
 const emit = defineEmits(['search'])
 const address = ref('')
 const difficulty = 'Medium'
-const distance = '20-30 km'
+const distance = '10-20 km'
 const isMobile = ref(window.innerWidth < 640)
 
 // Responsive: isMobile is true if window width < 640px (sm)
